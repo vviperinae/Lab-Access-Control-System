@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Classroom / Lab Access Control System — EFB 2073</title>
+<title>Classroom / Lab Access Control System - EFB 2073</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
   :root {
@@ -372,8 +372,8 @@
 <div class="hero">
   <div class="hero-inner">
     <div class="hero-tag">EFB 2073 / EEB 2083 · January 2026 · Universiti Teknologi PETRONAS</div>
-    <h1>Classroom / Lab Access Control System</h1>
-    <div class="hero-sub">Embedded Systems Project Report — NUCLEO-F401RE &amp; ARM Mbed OS</div>
+    <h1>Classroom and Lab Access Control System</h1>
+    <div class="hero-sub">Embedded Systems Project Report - NUCLEO-F401RE &amp; ARM Mbed OS</div>
     <div class="hero-meta">
       <span>👩‍💻 <strong>Safa Sarfraz</strong> · 24001006</span>
       <span>👩‍💻 <strong>Eunice Yeo Lok Qian</strong> · 22010378</span>
@@ -411,7 +411,7 @@
 
   <h3>1.1 Project Introduction</h3>
   <p>Physical access control is a fundamental requirement in laboratory and research environments where sensitive equipment, intellectual property, and safety-critical conditions must be protected. Traditional key-based systems offer no audit trail and cannot respond dynamically to environmental conditions such as overheating. Microcontroller-based electronic access control systems address these limitations by combining credential-based authentication with real-time environmental sensing.</p>
-  <p>This project implements the system on the NUCLEO-F401RE development board equipped with the STM32F401RE Cortex-M4 microprocessor, using ARM Mbed OS as the software development framework. The system controls physical access based on two simultaneous conditions — a correct 4-digit PIN and a safe room temperature below 35 °C.</p>
+  <p>This project implements the system on the NUCLEO-F401RE development board equipped with the STM32F401RE Cortex-M4 microprocessor, using ARM Mbed OS as the software development framework. The system controls physical access based on two simultaneous conditions - a correct 4-digit PIN and a safe room temperature below 35 °C.</p>
 
   <h3>1.2 Problem Statement</h3>
   <p>Laboratory environments at universities house expensive equipment and sensitive research materials requiring controlled access. Conventional lock-and-key mechanisms cannot prevent access under unsafe environmental conditions such as electrical overheating, and they provide no access audit trail. There is therefore a need for an intelligent embedded access control system that simultaneously authenticates users and monitors environmental safety, denying entry automatically when conditions are unsafe.</p>
@@ -436,7 +436,7 @@
 
   <h3>2.1 System Block Diagram</h3>
   <div class="placeholder">
-    <strong>Figure 1 — System Block Diagram</strong>
+    <strong>Figure 1 - System Block Diagram</strong>
     Replace with your block diagram image
   </div>
 
@@ -446,20 +446,20 @@
     <div class="card"><div class="card-icon">⌨️</div><div class="card-title">4×4 Matrix Keypad</div><div class="card-desc">16-key membrane keypad, 8 GPIO connections, row-column scanning</div></div>
     <div class="card"><div class="card-icon">🌡️</div><div class="card-title">DHT11 Sensor</div><div class="card-desc">Single-wire digital temp & humidity sensor, ±2 °C / ±5% RH</div></div>
     <div class="card"><div class="card-icon">🖥️</div><div class="card-title">SSD1306 OLED</div><div class="card-desc">128×32 monochrome I2C display, 0x3C address, 4-row output</div></div>
-    <div class="card"><div class="card-icon">💡</div><div class="card-title">LED Indicators ×3</div><div class="card-desc">Green (granted), Red (denied), Yellow (overheat) — 330 Ω each</div></div>
+    <div class="card"><div class="card-icon">💡</div><div class="card-title">LED Indicators ×3</div><div class="card-desc">Green (granted), Red (denied), Yellow (overheat) - 330 Ω each</div></div>
     <div class="card"><div class="card-icon">🔘</div><div class="card-title">Push Button</div><div class="card-desc">Onboard PC13 button, active-low with internal pull-up, admin mode</div></div>
   </div>
 
   <h3>2.3 LED Status Indicators</h3>
   <div class="led-row">
-    <div class="led led-green"><div class="led-dot"></div> Green — Access Granted (PC8)</div>
-    <div class="led led-red"><div class="led-dot"></div> Red — Access Denied (PC6)</div>
-    <div class="led led-yellow"><div class="led-dot"></div> Yellow — Overheat Warning (PC5)</div>
+    <div class="led led-green"><div class="led-dot"></div> Green - Access Granted (PC8)</div>
+    <div class="led led-red"><div class="led-dot"></div> Red - Access Denied (PC6)</div>
+    <div class="led led-yellow"><div class="led-dot"></div> Yellow - Overheat Warning (PC5)</div>
   </div>
 
   <h3>2.4 Circuit Wiring Diagram</h3>
   <div class="placeholder">
-    <strong>Figure 2 — Circuit / Wiring Diagram</strong>
+    <strong>Figure 2 - Circuit / Wiring Diagram</strong>
     Replace with your wiring diagram image
   </div>
 
@@ -508,11 +508,11 @@
 
   <h3>2.6 Hardware Prototype</h3>
   <div class="placeholder">
-    <strong>Photo 1 — Full hardware setup</strong>
+    <strong>Photo 1 - Full hardware setup</strong>
     Replace with your actual hardware photo
   </div>
   <div class="placeholder">
-    <strong>Photo 2 — OLED display output</strong>
+    <strong>Photo 2 - OLED display output</strong>
     Replace with a close-up photo of the OLED during operation
   </div>
 </div>
@@ -525,11 +525,11 @@
   <h2>Firmware / Software Development</h2>
 
   <h3>3.1 Development Environment</h3>
-  <p>All firmware was developed using the ARM Mbed online compiler at <strong>os.mbed.com</strong>, targeting the NUCLEO-F401RE. A single <code style="background:#f1f5f9;padding:2px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px;">main.cpp</code> source file contains all firmware modules. No external libraries were required — the OLED driver, DHT11 driver, and keypad scanner were all written from scratch using Mbed OS built-in APIs. The compiled <code style="background:#f1f5f9;padding:2px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px;">.bin</code> file was flashed by drag-and-drop onto the NUCLEO USB drive.</p>
+  <p>All firmware was developed using the ARM Mbed online compiler at <strong>os.mbed.com</strong>, targeting the NUCLEO-F401RE. A single <code style="background:#f1f5f9;padding:2px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px;">main.cpp</code> source file contains all firmware modules. No external libraries were required - the OLED driver, DHT11 driver, and keypad scanner were all written from scratch using Mbed OS built-in APIs. The compiled <code style="background:#f1f5f9;padding:2px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px;">.bin</code> file was flashed by drag-and-drop onto the NUCLEO USB drive.</p>
 
   <h3>3.2 Program Flowchart</h3>
   <div class="placeholder">
-    <strong>Figure 3 — Main Program Flowchart</strong>
+    <strong>Figure 3 - Main Program Flowchart</strong>
     Replace with your flowchart image
   </div>
 
@@ -633,7 +633,7 @@
   <h4>PIN Verification</h4>
   <div class="code-block">
     <span class="code-label">main.cpp</span>
-    <pre><span class="cm">// Inside main loop — '#' key handler</span>
+    <pre><span class="cm">// Inside main loop - '#' key handler</span>
 <span class="kw">else if</span> (key == <span class="str">'#'</span>) {
     <span class="kw">if</span> (pin_index == <span class="num">4</span>) {
         entered_pin[<span class="num">4</span>] = <span class="str">'\0'</span>;
@@ -688,7 +688,7 @@
     <div class="card"><div class="card-icon">✅</div><div class="card-title">Full Integration</div><div class="card-desc">Five independent peripherals successfully integrated into a single coherent embedded firmware.</div></div>
     <div class="card"><div class="card-icon">🔐</div><div class="card-title">Dual-Condition Policy</div><div class="card-desc">Correct PIN AND safe temperature enforced reliably across all test scenarios.</div></div>
     <div class="card"><div class="card-icon">📋</div><div class="card-title">Access Logging</div><div class="card-desc">Rolling 3-entry access log, occupancy tracking, and admin PIN change all verified in hardware.</div></div>
-    <div class="card"><div class="card-icon">📦</div><div class="card-title">No External Libraries</div><div class="card-desc">All drivers — OLED, DHT11, keypad — written from scratch using only Mbed OS built-ins.</div></div>
+    <div class="card"><div class="card-icon">📦</div><div class="card-title">No External Libraries</div><div class="card-desc">All drivers - OLED, DHT11, keypad - written from scratch using only Mbed OS built-ins.</div></div>
   </div>
 
   <h3>4.5 Limitations &amp; Possible Improvements</h3>
@@ -709,26 +709,6 @@
   <h2>Conclusion</h2>
   <p>This project successfully demonstrates the design and implementation of a complete embedded access control system on the NUCLEO-F401RE microcontroller using the ARM Mbed development environment. The system integrates a 4×4 matrix keypad, DHT11 environmental sensor, SSD1306 OLED display, three LED indicators, and an onboard push button to deliver a functional and multi-featured access control solution.</p>
   <p>All six project objectives were met. PIN-based authentication with lockout protection, environment-conditional access denial, real-time temperature and humidity display, occupancy tracking, access logging, and admin PIN reconfiguration were all implemented and verified in hardware. The use of Mbed OS allowed rapid development of complex multi-peripheral firmware while maintaining structured, readable, and modular code. The project demonstrates how microcontroller-based embedded systems can solve real-world engineering problems in security and environmental monitoring.</p>
-
-  <div style="margin-top:32px;">
-    <div class="section-label">Group Members</div>
-    <div class="members">
-      <div class="member-card">
-        <div class="member-avatar">S</div>
-        <div class="member-name">Safa Sarfraz</div>
-        <div class="member-id">24001006</div>
-        <div class="member-role">Security &amp; Access System<br>Keypad, PIN logic, lockout, admin mode</div>
-      </div>
-      <div class="member-card">
-        <div class="member-avatar">E</div>
-        <div class="member-name">Eunice Yeo Lok Qian</div>
-        <div class="member-id">22010378</div>
-        <div class="member-role">Environment &amp; Display<br>DHT11, OLED driver, main loop, temperature warning</div>
-      </div>
-    </div>
-  </div>
-</div>
-</section>
 
 <!-- APPENDIX -->
 <section id="appendix">
@@ -801,7 +781,7 @@
 </section>
 
 <footer>
-  <strong>EFB 2073 / EEB 2083 — Microprocessors &amp; Computer Architecture</strong><br>
+  <strong>EFB 2073 - Microprocessors &amp; Computer Architecture</strong><br>
   Universiti Teknologi PETRONAS · January 2026 Semester<br>
   Safa Sarfraz (24001006) &nbsp;·&nbsp; Eunice Yeo Lok Qian (22010378)
 </footer>
