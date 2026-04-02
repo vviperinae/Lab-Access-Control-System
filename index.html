@@ -7,357 +7,186 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
   :root {
-    --navy:   #0f1f3d;
-    --blue:   #1a56db;
-    --sky:    #3b82f6;
-    --teal:   #0ea5e9;
-    --gold:   #f59e0b;
-    --green:  #10b981;
-    --red:    #ef4444;
-    --yellow: #fbbf24;
-    --light:  #f8fafc;
-    --mid:    #e2e8f0;
-    --muted:  #64748b;
-    --text:   #1e293b;
-    --card:   #ffffff;
-    --code-bg:#0f172a;
-    --code-text:#e2e8f0;
+    --purple:  #9b6ee8;
+    --pink:    #e07aad;
+    --blue:    #6aaee8;
+    --lavender:#c4aff0;
+    --green:   #6dc9a8;
+    --red:     #e07a8a;
+    --yellow:  #e8c86a;
+    --bg:      #fdfcff;
+    --surface: #f7f4fd;
+    --border:  #ede8f7;
+    --muted:   #9689b5;
+    --text:    #2d1f4a;
+    --subtext: #5a4e78;
+    --card:    #ffffff;
+    --code-bg: #1e1630;
+    --code-text:#e8e0f8;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; font-size: 16px; }
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--light);
-    color: var(--text);
-    line-height: 1.75;
-    font-size: 16px;
-  }
-
-  /* ── HERO ── */
+  /* HERO */
   .hero {
-    background: linear-gradient(135deg, var(--navy) 0%, #1a3a6e 60%, #1a56db 100%);
-    color: white;
-    padding: 80px 40px 100px;
-    position: relative;
-    overflow: hidden;
+    background: linear-gradient(140deg, #f0e8ff 0%, #fce8f5 50%, #e8f0ff 100%);
+    padding: 80px 40px 96px;
+    border-bottom: 1px solid var(--border);
   }
-  .hero::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    pointer-events: none;
-  }
-  .hero-inner { max-width: 860px; margin: 0 auto; position: relative; }
+  .hero-inner { max-width: 860px; margin: 0 auto; }
   .hero-tag {
     display: inline-block;
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(155,110,232,0.1);
+    border: 1px solid rgba(155,110,232,0.25);
     border-radius: 100px;
     padding: 4px 16px;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.04em;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     margin-bottom: 24px;
-    color: #93c5fd;
+    color: var(--purple);
   }
   .hero h1 {
     font-family: 'DM Serif Display', serif;
-    font-size: clamp(32px, 5vw, 52px);
+    font-size: clamp(28px, 4.5vw, 48px);
     line-height: 1.15;
-    margin-bottom: 12px;
-    color: #fff;
+    margin-bottom: 10px;
+    color: var(--text);
   }
-  .hero-sub {
-    font-size: 18px;
-    color: #93c5fd;
-    margin-bottom: 36px;
-  }
-  .hero-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    font-size: 14px;
-    color: rgba(255,255,255,0.7);
-  }
+  .hero-sub { font-size: 16px; color: var(--subtext); margin-bottom: 32px; font-weight: 400; }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 20px; font-size: 14px; color: var(--muted); }
   .hero-meta span { display: flex; align-items: center; gap: 6px; }
-  .hero-meta strong { color: #fff; }
+  .hero-meta strong { color: var(--subtext); }
 
-  /* ── NAV ── */
+  /* NAV */
   .sticky-nav {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--mid);
+    background: rgba(253,252,255,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
     padding: 0 40px;
   }
-  .nav-inner {
-    max-width: 860px; margin: 0 auto;
-    display: flex; gap: 0; overflow-x: auto;
-    scrollbar-width: none;
-  }
+  .nav-inner { max-width: 860px; margin: 0 auto; display: flex; overflow-x: auto; scrollbar-width: none; }
   .nav-inner::-webkit-scrollbar { display: none; }
   .nav-inner a {
-    text-decoration: none;
-    color: var(--muted);
-    font-size: 13px;
-    font-weight: 500;
-    padding: 14px 16px;
-    white-space: nowrap;
-    border-bottom: 2px solid transparent;
-    transition: all .2s;
+    text-decoration: none; color: var(--muted); font-size: 13px; font-weight: 500;
+    padding: 13px 14px; white-space: nowrap;
+    border-bottom: 2px solid transparent; transition: all .18s;
   }
-  .nav-inner a:hover { color: var(--blue); border-bottom-color: var(--blue); }
+  .nav-inner a:hover { color: var(--purple); border-bottom-color: var(--lavender); }
 
-  /* ── LAYOUT ── */
+  /* LAYOUT */
   .wrap { max-width: 860px; margin: 0 auto; padding: 0 40px; }
-
-  section { padding: 64px 0; border-bottom: 1px solid var(--mid); }
+  section { padding: 60px 0; border-bottom: 1px solid var(--border); }
   section:last-child { border-bottom: none; }
-
-  .section-label {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--blue);
-    margin-bottom: 8px;
-  }
-  h2 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(24px, 3vw, 32px);
-    color: var(--navy);
-    margin-bottom: 24px;
-  }
-  h3 {
-    font-size: 17px;
-    font-weight: 600;
-    color: var(--navy);
-    margin: 32px 0 12px;
-  }
-  h4 {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin: 24px 0 10px;
-  }
-  p { margin-bottom: 16px; color: #334155; }
+  .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--lavender); margin-bottom: 6px; }
+  h2 { font-family: 'DM Serif Display', serif; font-size: clamp(22px, 3vw, 30px); color: var(--text); margin-bottom: 20px; }
+  h3 { font-size: 16px; font-weight: 600; color: var(--text); margin: 28px 0 10px; }
+  h4 { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin: 22px 0 8px; }
+  p { margin-bottom: 14px; color: var(--subtext); }
   p:last-child { margin-bottom: 0; }
+  code { background: var(--surface); padding: 2px 6px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--purple); }
 
-  /* ── ABSTRACT ── */
+  /* ABSTRACT */
   .abstract-box {
-    background: linear-gradient(135deg, #eff6ff, #f0f9ff);
-    border-left: 4px solid var(--blue);
-    border-radius: 0 12px 12px 0;
-    padding: 28px 32px;
+    background: linear-gradient(135deg, rgba(155,110,232,0.06), rgba(224,122,173,0.05));
+    border-left: 3px solid var(--lavender);
+    border-radius: 0 10px 10px 0;
+    padding: 24px 28px;
     font-size: 15px;
     line-height: 1.8;
-    color: #1e3a5f;
+    color: var(--subtext);
   }
 
-  /* ── CARDS ── */
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 16px;
-    margin: 24px 0;
-  }
+  /* CARDS */
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin: 20px 0; }
   .card {
-    background: var(--card);
-    border: 1px solid var(--mid);
-    border-radius: 12px;
-    padding: 20px;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 18px;
     transition: box-shadow .2s, transform .2s;
   }
-  .card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); transform: translateY(-2px); }
-  .card-icon { font-size: 28px; margin-bottom: 12px; }
-  .card-title { font-weight: 600; font-size: 14px; margin-bottom: 6px; color: var(--navy); }
-  .card-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
+  .card:hover { box-shadow: 0 4px 20px rgba(155,110,232,0.1); transform: translateY(-1px); }
+  .card-icon { font-size: 24px; margin-bottom: 10px; }
+  .card-title { font-weight: 600; font-size: 13px; margin-bottom: 5px; color: var(--text); }
+  .card-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
 
-  /* ── LED INDICATORS ── */
-  .led-row {
-    display: flex; flex-wrap: wrap; gap: 12px; margin: 16px 0;
-  }
-  .led {
-    display: flex; align-items: center; gap: 10px;
-    background: var(--card);
-    border: 1px solid var(--mid);
-    border-radius: 100px;
-    padding: 8px 18px;
-    font-size: 14px;
-    font-weight: 500;
-  }
-  .led-dot {
-    width: 12px; height: 12px; border-radius: 50%;
-    box-shadow: 0 0 8px currentColor;
-  }
-  .led-green  .led-dot { background: var(--green);  color: var(--green);  }
-  .led-red    .led-dot { background: var(--red);    color: var(--red);    }
-  .led-yellow .led-dot { background: var(--yellow); color: var(--yellow); }
+  /* LED INDICATORS */
+  .led-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0; }
+  .led { display: flex; align-items: center; gap: 8px; background: var(--card); border: 1px solid var(--border); border-radius: 100px; padding: 7px 16px; font-size: 13px; font-weight: 500; color: var(--subtext); }
+  .led-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .led-green  .led-dot { background: var(--green);  box-shadow: 0 0 6px var(--green); }
+  .led-red    .led-dot { background: var(--red);    box-shadow: 0 0 6px var(--red); }
+  .led-yellow .led-dot { background: var(--yellow); box-shadow: 0 0 6px var(--yellow); }
 
-  /* ── TABLES ── */
-  .table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 10px; border: 1px solid var(--mid); }
-  table { width: 100%; border-collapse: collapse; font-size: 14px; }
-  th {
-    background: var(--navy); color: #fff;
-    padding: 11px 16px; text-align: left;
-    font-weight: 600; font-size: 13px;
-    letter-spacing: 0.02em;
-  }
+  /* TABLES */
+  .table-wrap { overflow-x: auto; margin: 18px 0; border-radius: 10px; border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: var(--surface); color: var(--text); padding: 10px 14px; text-align: left; font-weight: 600; font-size: 12px; letter-spacing: 0.03em; }
   th:first-child { border-radius: 9px 0 0 0; }
   th:last-child  { border-radius: 0 9px 0 0; }
-  td { padding: 10px 16px; border-bottom: 1px solid var(--mid); color: #334155; }
+  td { padding: 9px 14px; border-bottom: 1px solid var(--border); color: var(--subtext); }
   tr:last-child td { border-bottom: none; }
-  tr:nth-child(even) td { background: #f8fafc; }
+  .pass { display: inline-block; background: rgba(109,201,168,0.15); color: #2a8c68; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 100px; letter-spacing: 0.04em; }
 
-  /* ── PASS BADGE ── */
-  .pass {
-    display: inline-block;
-    background: #dcfce7; color: #15803d;
-    font-size: 12px; font-weight: 600;
-    padding: 2px 10px; border-radius: 100px;
-  }
+  /* CODE */
+  .code-block { background: var(--code-bg); border-radius: 10px; padding: 22px; overflow-x: auto; margin: 14px 0; position: relative; }
+  .code-label { position: absolute; top: 10px; right: 14px; font-size: 11px; color: #5a4e78; font-family: 'JetBrains Mono', monospace; }
+  pre { font-family: 'JetBrains Mono', monospace; font-size: 12.5px; line-height: 1.7; color: var(--code-text); white-space: pre; }
+  .kw  { color: #d4aaff; }
+  .fn  { color: #a0d4ff; }
+  .str { color: #b8f0c8; }
+  .cm  { color: #4a3e6a; font-style: italic; }
+  .num { color: #ffda9a; }
+  .typ { color: #ffb8d4; }
 
-  /* ── CODE ── */
-  .code-block {
-    background: var(--code-bg);
-    border-radius: 10px;
-    padding: 24px;
-    overflow-x: auto;
-    margin: 16px 0;
-    position: relative;
-  }
-  .code-label {
-    position: absolute; top: 10px; right: 14px;
-    font-size: 11px; color: #475569;
-    font-family: 'JetBrains Mono', monospace;
-    letter-spacing: 0.04em;
-  }
-  pre {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    line-height: 1.7;
-    color: var(--code-text);
-    white-space: pre;
-  }
-  .kw  { color: #c084fc; }
-  .fn  { color: #60a5fa; }
-  .str { color: #86efac; }
-  .cm  { color: #4b5563; font-style: italic; }
-  .num { color: #fbbf24; }
-  .typ { color: #f9a8d4; }
+  /* OBJECTIVES */
+  .obj-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin: 14px 0; }
+  .obj-list li { display: flex; align-items: flex-start; gap: 12px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; }
+  .obj-num { flex-shrink: 0; width: 26px; height: 26px; background: linear-gradient(135deg, var(--purple), var(--pink)); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
+  .obj-list li p { margin: 0; font-size: 14px; padding-top: 3px; }
 
-  /* ── OBJECTIVES LIST ── */
-  .obj-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin: 16px 0; }
-  .obj-list li {
-    display: flex; align-items: flex-start; gap: 14px;
-    background: var(--card); border: 1px solid var(--mid);
-    border-radius: 10px; padding: 14px 18px;
-  }
-  .obj-num {
-    flex-shrink: 0;
-    width: 28px; height: 28px;
-    background: var(--blue); color: white;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 13px; font-weight: 700;
-  }
-  .obj-list li p { margin: 0; font-size: 14px; padding-top: 4px; }
-
-  /* ── WIRING BLOCK ── */
-  .wiring-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
+  /* WIRING */
+  .wiring-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 18px 0; }
   @media (max-width: 600px) { .wiring-grid { grid-template-columns: 1fr; } }
-  .wiring-card {
-    background: var(--card);
-    border: 1px solid var(--mid);
-    border-radius: 12px;
-    overflow: hidden;
-  }
-  .wiring-head {
-    background: var(--navy); color: #fff;
-    padding: 10px 16px; font-size: 13px; font-weight: 600;
-  }
-  .wiring-card table { font-size: 13px; }
-  .wiring-card th { background: #1e3a6e; font-size: 12px; padding: 8px 12px; }
-  .wiring-card td { padding: 8px 12px; }
+  .wiring-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  .wiring-head { background: var(--surface); color: var(--text); padding: 9px 14px; font-size: 12px; font-weight: 600; border-bottom: 1px solid var(--border); }
+  .wiring-card table { font-size: 12px; }
+  .wiring-card th { background: var(--surface); font-size: 11px; padding: 7px 12px; }
+  .wiring-card td { padding: 7px 12px; }
 
-  /* ── FLOW STEPS ── */
-  .flow { display: flex; flex-direction: column; gap: 0; margin: 20px 0; }
-  .flow-step {
-    display: flex; gap: 20px; align-items: flex-start;
-    padding: 16px 0;
-    border-left: 2px solid var(--mid);
-    margin-left: 16px;
-    padding-left: 28px;
-    position: relative;
-  }
-  .flow-step::before {
-    content: attr(data-n);
-    position: absolute; left: -13px; top: 18px;
-    width: 24px; height: 24px;
-    background: var(--blue); color: white;
-    border-radius: 50%;
-    font-size: 12px; font-weight: 700;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .flow-step-title { font-weight: 600; font-size: 14px; color: var(--navy); margin-bottom: 4px; }
+  /* FLOW STEPS */
+  .flow { display: flex; flex-direction: column; margin: 18px 0; }
+  .flow-step { display: flex; gap: 18px; align-items: flex-start; padding: 14px 0; border-left: 2px solid var(--border); margin-left: 12px; padding-left: 24px; position: relative; }
+  .flow-step::before { content: attr(data-n); position: absolute; left: -11px; top: 16px; width: 20px; height: 20px; background: linear-gradient(135deg, var(--purple), var(--blue)); color: white; border-radius: 50%; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  .flow-step-title { font-weight: 600; font-size: 14px; color: var(--text); margin-bottom: 3px; }
   .flow-step-desc  { font-size: 13px; color: var(--muted); }
 
-  /* ── LIMITATIONS ── */
-  .limit-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin: 16px 0; }
-  .limit-list li {
-    display: flex; gap: 12px;
-    background: #fff7ed; border: 1px solid #fed7aa;
-    border-radius: 10px; padding: 14px 16px;
-    font-size: 14px;
-  }
-  .limit-list li::before { content: '⚠'; flex-shrink: 0; }
+  /* FUNCTION LIST */
+  .fn-list { list-style: none; display: flex; flex-direction: column; gap: 7px; margin: 14px 0; }
+  .fn-list li { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; font-size: 13px; color: var(--subtext); }
+  .fn-list li code { margin-right: 6px; }
 
-  /* ── PLACEHOLDER ── */
-  .placeholder {
-    background: #f1f5f9;
-    border: 2px dashed #cbd5e1;
-    border-radius: 12px;
-    padding: 48px 24px;
-    text-align: center;
-    color: #94a3b8;
-    font-size: 14px;
-    margin: 16px 0;
-  }
-  .placeholder strong { display: block; font-size: 16px; margin-bottom: 4px; color: #64748b; }
+  /* OBSERVATION CARDS */
+  .obs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; margin: 18px 0; }
+  .obs-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 18px; }
+  .obs-card-head { font-weight: 600; font-size: 13px; color: var(--text); margin-bottom: 8px; }
+  .obs-card p { font-size: 13px; color: var(--muted); margin: 0; line-height: 1.6; }
 
-  /* ── MEMBERS ── */
-  .members { display: flex; gap: 20px; flex-wrap: wrap; margin: 24px 0; }
-  .member-card {
-    flex: 1; min-width: 200px;
-    background: var(--card);
-    border: 1px solid var(--mid);
-    border-radius: 14px;
-    padding: 24px;
-    text-align: center;
-  }
-  .member-avatar {
-    width: 64px; height: 64px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--blue), var(--teal));
-    display: flex; align-items: center; justify-content: center;
-    font-size: 24px; font-weight: 700; color: white;
-    margin: 0 auto 14px;
-  }
-  .member-name { font-weight: 600; font-size: 16px; color: var(--navy); }
-  .member-id   { font-size: 13px; color: var(--muted); margin: 4px 0 12px; }
-  .member-role { font-size: 13px; color: #475569; }
+  /* LIMITATIONS */
+  .limit-list { list-style: none; display: flex; flex-direction: column; gap: 8px; margin: 14px 0; }
+  .limit-list li { display: flex; gap: 10px; background: rgba(224,122,173,0.06); border: 1px solid rgba(224,122,173,0.2); border-radius: 8px; padding: 12px 14px; font-size: 13px; color: var(--subtext); }
+  .limit-list li::before { content: '!'; flex-shrink: 0; width: 18px; height: 18px; background: rgba(224,122,173,0.2); color: var(--pink); border-radius: 50%; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
 
-  /* ── FOOTER ── */
-  footer {
-    background: var(--navy); color: rgba(255,255,255,0.5);
-    text-align: center; padding: 32px 40px;
-    font-size: 13px;
-  }
-  footer strong { color: rgba(255,255,255,0.8); }
+  /* PLACEHOLDER */
+  .placeholder { background: var(--surface); border: 1.5px dashed var(--border); border-radius: 10px; padding: 44px 24px; text-align: center; color: var(--muted); font-size: 13px; margin: 14px 0; }
+  .placeholder strong { display: block; font-size: 14px; margin-bottom: 4px; color: var(--subtext); }
+
+  /* FOOTER */
+  footer { background: var(--surface); color: var(--muted); text-align: center; padding: 28px 40px; font-size: 13px; border-top: 1px solid var(--border); }
+  footer strong { color: var(--subtext); }
 
   @media (max-width: 640px) {
     .hero { padding: 48px 24px 64px; }
@@ -371,12 +200,12 @@
 <!-- HERO -->
 <div class="hero">
   <div class="hero-inner">
-    <div class="hero-tag">EFB 2073 · January 2026 · Universiti Teknologi PETRONAS</div>
+    <div class="hero-tag">EFB 2073 - January 2026 - Universiti Teknologi PETRONAS</div>
     <h1>Classroom and Lab Access Control System</h1>
-    <div class="hero-sub">Embedded Systems Project Report - NUCLEO-F401RE &amp; ARM Mbed OS</div>
+    <div class="hero-sub">Embedded Systems Project Report - NUCLEO-F401RE and ARM Mbed OS</div>
     <div class="hero-meta">
-      <span>👩‍💻 <strong>Safa Sarfraz</strong> · 24001006</span>
-      <span>👩‍💻 <strong>Eunice Yeo Lok Qian</strong> · 22010378</span>
+      <span>&#128105;&#8205;&#128187; <strong>Safa Sarfraz</strong> &middot; 24001006</span>
+      <span>&#128105;&#8205;&#128187; <strong>Eunice Yeo Lok Qian</strong> &middot; 22010378</span>
     </div>
   </div>
 </div>
@@ -394,11 +223,11 @@
 </nav>
 
 <!-- ABSTRACT -->
-<div style="background:#fff; border-bottom:1px solid var(--mid);">
-<div class="wrap" style="padding-top:48px; padding-bottom:48px;">
+<div style="background:var(--card); border-bottom:1px solid var(--border);">
+<div class="wrap" style="padding-top:44px; padding-bottom:44px;">
   <div class="section-label">Abstract</div>
   <div class="abstract-box">
-    This report documents the design and implementation of a Classroom/Lab Access Control System developed for EFB 2073 – Microprocessors and Computer Architecture using the NUCLEO-F401RE Cortex-M4 microcontroller and the ARM Mbed development environment. The system integrates a 4×4 matrix keypad for PIN-based authentication, a DHT11 digital sensor for real-time temperature and humidity monitoring, an SSD1306 OLED display for system feedback, and three LED indicators for visual status signalling. Access is granted only when both conditions are satisfied: the correct 4-digit PIN is entered and the room temperature is below 35 °C. Overheating triggers an automatic access denial with a distinct yellow LED warning regardless of PIN correctness. Additional features include a 30-second lockout after three consecutive failed attempts, an admin mode for PIN reconfiguration, occupancy tracking, and a rolling access log storing the last three entry attempts. All firmware was written in C++ using Mbed OS with no external libraries required.
+    This report documents the design and implementation of a Classroom/Lab Access Control System developed for EFB 2073 - Microprocessors and Computer Architecture using the NUCLEO-F401RE Cortex-M4 microcontroller and the ARM Mbed development environment. The system integrates a 4x4 matrix keypad for PIN-based authentication, a DHT11 digital sensor for real-time temperature and humidity monitoring, an SSD1306 OLED display for system feedback, and three LED indicators for visual status signalling. Access is granted only when both conditions are satisfied: the correct 4-digit PIN is entered and the room temperature is below 35 C. Overheating triggers an automatic access denial with a distinct yellow LED warning regardless of PIN correctness. Additional features include a 30-second lockout after three consecutive failed attempts, an admin mode for PIN reconfiguration via the onboard push button, occupancy tracking with live status display, and a rolling access log storing the last three entry attempts. All firmware was written in C++ using the Mbed OS framework, with no external libraries required. All features were successfully verified through hardware testing on the NUCLEO board.
   </div>
 </div>
 </div>
@@ -411,19 +240,20 @@
 
   <h3>1.1 Project Introduction</h3>
   <p>Physical access control is a fundamental requirement in laboratory and research environments where sensitive equipment, intellectual property, and safety-critical conditions must be protected. Traditional key-based systems offer no audit trail and cannot respond dynamically to environmental conditions such as overheating. Microcontroller-based electronic access control systems address these limitations by combining credential-based authentication with real-time environmental sensing.</p>
-  <p>This project implements the system on the NUCLEO-F401RE development board equipped with the STM32F401RE Cortex-M4 microprocessor, using ARM Mbed OS as the software development framework. The system controls physical access based on two simultaneous conditions - a correct 4-digit PIN and a safe room temperature below 35 °C.</p>
+  <p>This project implements a Classroom/Lab Access Control System on the NUCLEO-F401RE development board, equipped with the STM32F401RE microprocessor based on the ARM Cortex-M4 32-bit architecture. The ARM Mbed OS framework is used as the software development environment, providing a hardware abstraction layer and a rich set of peripheral driver APIs suited to rapid embedded system prototyping. The system builds directly on the firmware development skills acquired in Practical Tasks #1 and #2, extending them into a complete multi-peripheral integrated system design.</p>
+  <p>The system controls physical access based on two simultaneous conditions: a correct 4-digit PIN entered via a keypad, and a safe room temperature below 35 C. If the room is overheating - posing an equipment damage risk - entry is denied even when the PIN is correct. The OLED display shows live temperature, humidity, occupancy status, and a rolling log of the last three access attempts, providing complete real-time feedback to the user at all times.</p>
 
   <h3>1.2 Problem Statement</h3>
-  <p>Laboratory environments at universities house expensive equipment and sensitive research materials requiring controlled access. Conventional lock-and-key mechanisms cannot prevent access under unsafe environmental conditions such as electrical overheating, and they provide no access audit trail. There is therefore a need for an intelligent embedded access control system that simultaneously authenticates users and monitors environmental safety, denying entry automatically when conditions are unsafe.</p>
+  <p>Laboratory environments at universities house expensive equipment and sensitive research materials that require controlled access. Conventional lock-and-key mechanisms do not prevent access under unsafe environmental conditions such as electrical overheating, which can cause equipment damage or fire hazards. Furthermore, manual key systems do not record who accessed a facility or when, making it impossible to investigate incidents after the fact. There is therefore a need for an intelligent, microcontroller-based access control system that can simultaneously authenticate users and monitor environmental safety, denying entry automatically when conditions are unsafe.</p>
 
   <h3>1.3 Project Objectives</h3>
   <ol class="obj-list">
-    <li><span class="obj-num">1</span><p>Implement a 4-digit PIN authentication system using a 4×4 matrix keypad with lockout protection after three consecutive failed attempts.</p></li>
-    <li><span class="obj-num">2</span><p>Integrate a DHT11 sensor for real-time room temperature and humidity monitoring, with automatic access denial when temperature exceeds 35 °C.</p></li>
+    <li><span class="obj-num">1</span><p>Implement a 4-digit PIN authentication system using a 4x4 matrix keypad with lockout protection after three consecutive failed attempts.</p></li>
+    <li><span class="obj-num">2</span><p>Integrate a DHT11 sensor for real-time room temperature and humidity monitoring, with automatic access denial when temperature exceeds 35 C.</p></li>
     <li><span class="obj-num">3</span><p>Display live system status, PIN entry feedback, temperature, humidity, and an access log on an SSD1306 OLED display via I2C.</p></li>
     <li><span class="obj-num">4</span><p>Implement occupancy tracking that toggles the lab status between VACANT and OCCUPIED upon each successful access grant.</p></li>
     <li><span class="obj-num">5</span><p>Develop an admin mode allowing authorised users to change the system PIN via the onboard push button.</p></li>
-    <li><span class="obj-num">6</span><p>Demonstrate structured embedded firmware development using C++ in ARM Mbed, incorporating GPIO, I2C, timers, and digital sensor interfaces.</p></li>
+    <li><span class="obj-num">6</span><p>Demonstrate structured embedded firmware development using C++ in the ARM Mbed environment, incorporating GPIO, I2C, timers, and digital sensor interfaces.</p></li>
   </ol>
 </div>
 </section>
@@ -435,6 +265,7 @@
   <h2>Hardware Design</h2>
 
   <h3>2.1 System Block Diagram</h3>
+  <p>The overall hardware architecture of the system is shown below. The NUCLEO-F401RE microcontroller acts as the central processing unit, interfacing with five peripheral subsystems: the 4x4 matrix keypad for user input, the DHT11 sensor for environmental data, the SSD1306 OLED display for feedback output, three LED indicators for visual status, and the onboard push button for admin mode.</p>
   <div class="placeholder">
     <strong>Figure 1 - System Block Diagram</strong>
     Replace with your block diagram image
@@ -442,11 +273,11 @@
 
   <h3>2.2 Hardware Components</h3>
   <div class="card-grid">
-    <div class="card"><div class="card-icon">🎛️</div><div class="card-title">NUCLEO-F401RE</div><div class="card-desc">STM32F401RE Cortex-M4 microcontroller, 84 MHz, 512 KB Flash</div></div>
-    <div class="card"><div class="card-icon">⌨️</div><div class="card-title">4×4 Matrix Keypad</div><div class="card-desc">16-key membrane keypad, 8 GPIO connections, row-column scanning</div></div>
-    <div class="card"><div class="card-icon">🌡️</div><div class="card-title">DHT11 Sensor</div><div class="card-desc">Single-wire digital temp & humidity sensor, ±2 °C / ±5% RH</div></div>
-    <div class="card"><div class="card-icon">🖥️</div><div class="card-title">SSD1306 OLED</div><div class="card-desc">128×32 monochrome I2C display, 0x3C address, 4-row output</div></div>
-    <div class="card"><div class="card-icon">💡</div><div class="card-title">LED Indicators ×3</div><div class="card-desc">Green (granted), Red (denied), Yellow (overheat) - 330 Ω each</div></div>
+    <div class="card"><div class="card-icon">🎛️</div><div class="card-title">NUCLEO-F401RE</div><div class="card-desc">STM32F401RE Cortex-M4, 84 MHz, 512 KB Flash</div></div>
+    <div class="card"><div class="card-icon">⌨️</div><div class="card-title">4x4 Matrix Keypad</div><div class="card-desc">16-key membrane keypad, 8 GPIO connections, row-column scanning</div></div>
+    <div class="card"><div class="card-icon">🌡️</div><div class="card-title">DHT11 Sensor</div><div class="card-desc">Single-wire digital temp and humidity, +/-2 C / +/-5% RH</div></div>
+    <div class="card"><div class="card-icon">🖥️</div><div class="card-title">SSD1306 OLED</div><div class="card-desc">128x32 monochrome I2C display, 0x3C address, 4-row output</div></div>
+    <div class="card"><div class="card-icon">💡</div><div class="card-title">LED Indicators x3</div><div class="card-desc">Green (granted), Red (denied), Yellow (overheat) - 330 ohm each</div></div>
     <div class="card"><div class="card-icon">🔘</div><div class="card-title">Push Button</div><div class="card-desc">Onboard PC13 button, active-low with internal pull-up, admin mode</div></div>
   </div>
 
@@ -457,9 +288,9 @@
     <div class="led led-yellow"><div class="led-dot"></div> Yellow - Overheat Warning (PC5)</div>
   </div>
 
-  <h3>2.4 Circuit Wiring Diagram</h3>
+  <h3>2.4 Circuit / Wiring Diagram</h3>
   <div class="placeholder">
-    <strong>Figure 2 - Circuit / Wiring Diagram</strong>
+    <strong>Figure 2 - Complete Wiring Diagram</strong>
     Replace with your wiring diagram image
   </div>
 
@@ -483,7 +314,7 @@
       </tbody></table>
     </div>
     <div class="wiring-card">
-      <div class="wiring-head">⌨️ 4×4 Keypad</div>
+      <div class="wiring-head">⌨️ 4x4 Keypad</div>
       <table><thead><tr><th>Keypad Pin</th><th>NUCLEO Pin</th></tr></thead><tbody>
         <tr><td>R1 (Row 1)</td><td>PA0</td></tr>
         <tr><td>R2 (Row 2)</td><td>PA1</td></tr>
@@ -496,24 +327,21 @@
       </tbody></table>
     </div>
     <div class="wiring-card">
-      <div class="wiring-head">💡 LEDs &amp; Button</div>
+      <div class="wiring-head">💡 LEDs and Button</div>
       <table><thead><tr><th>Component</th><th>NUCLEO Pin</th></tr></thead><tbody>
-        <tr><td>Green LED</td><td>PC8</td></tr>
-        <tr><td>Red LED</td><td>PC6</td></tr>
-        <tr><td>Yellow LED</td><td>PC5</td></tr>
-        <tr><td>Admin Button</td><td>PC13</td></tr>
+        <tr><td>Green LED</td><td>PC8 + 330 ohm</td></tr>
+        <tr><td>Red LED</td><td>PC6 + 330 ohm</td></tr>
+        <tr><td>Yellow LED</td><td>PC5 + 330 ohm</td></tr>
+        <tr><td>Admin Button</td><td>PC13 (onboard)</td></tr>
       </tbody></table>
     </div>
   </div>
+  <p style="font-size:12px;color:var(--muted);margin-top:8px;">Each LED is connected in series with a 330 ohm current-limiting resistor between its GPIO pin and GND, giving a safe operating current of approximately 7-10 mA at 3.3 V.</p>
 
   <h3>2.6 Hardware Prototype</h3>
   <div class="placeholder">
-    <strong>Photo 1 - Full hardware setup</strong>
+    <strong>Figure 3 - Full Hardware Setup</strong>
     Replace with your actual hardware photo
-  </div>
-  <div class="placeholder">
-    <strong>Photo 2 - OLED display output</strong>
-    Replace with a close-up photo of the OLED during operation
   </div>
 </div>
 </section>
@@ -525,57 +353,75 @@
   <h2>Firmware / Software Development</h2>
 
   <h3>3.1 Development Environment</h3>
-  <p>All firmware was developed using the ARM Mbed online compiler at <strong>os.mbed.com</strong>, targeting the NUCLEO-F401RE. A single <code style="background:#f1f5f9;padding:2px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px;">main.cpp</code> source file contains all firmware modules. No external libraries were required - the OLED driver, DHT11 driver, and keypad scanner were all written from scratch using Mbed OS built-in APIs. The compiled <code style="background:#f1f5f9;padding:2px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px;">.bin</code> file was flashed by drag-and-drop onto the NUCLEO USB drive.</p>
+  <p>All firmware was developed using the ARM Mbed online compiler at <strong>os.mbed.com</strong>, targeting the NUCLEO-F401RE. A single <code>main.cpp</code> source file was used containing all firmware modules. No external libraries were required - all driver implementations, including the OLED driver, DHT11 driver, and keypad scanner, were written from scratch using Mbed OS built-in APIs. The program was compiled online and the generated <code>.bin</code> file was downloaded and flashed to the NUCLEO board by drag-and-drop onto the board's USB mass storage drive. The board resets automatically and begins execution upon successful flashing.</p>
 
-  <h3>3.2 Program Flowchart</h3>
+  <h3>3.2 Firmware Architecture and Program Structure</h3>
+  <p>The firmware is structured around a single <code>main()</code> loop with peripheral drivers implemented as modular standalone functions. The architecture separates concerns cleanly: input scanning (keypad, button), environmental sensing (DHT11), output control (LEDs, OLED), and access logic (grant, deny, lockout, admin) are each handled by dedicated functions.</p>
+  <ul class="fn-list">
+    <li><code>oled_init() / oled_cmd() / oled_dat() / oled_char() / oled_print() / oled_clear()</code> Low-level OLED driver using I2C. Characters are rendered from a hardcoded 5-byte-per-character bitmap font for uppercase letters and digits.</li>
+    <li><code>dht11_read()</code> Reads temperature and humidity from the DHT11 sensor over a single GPIO pin using the DHT11 one-wire protocol, including checksum validation.</li>
+    <li><code>keypad_read()</code> Scans the 4x4 keypad by activating one row at a time and reading all columns, returning the pressed key character or 0 if no key is pressed.</li>
+    <li><code>grant_access()</code> Toggles the occupancy flag, logs the attempt as GRANTED, lights the green LED, displays ACCESS GRANTED, and resets the PIN entry state.</li>
+    <li><code>deny_access(bool overheat)</code> Logs the attempt as DENIED or OVERHEAT, increments the wrong attempt counter, activates the red LED, and optionally activates the yellow LED. Initiates lockout if three failures have been reached.</li>
+    <li><code>change_pin_mode()</code> Entered when the onboard button is held. Prompts for a new 4-digit PIN via the keypad and updates the stored correct PIN.</li>
+    <li><code>show_main_screen()</code> Renders the four OLED rows with occupancy status, PIN prompt, live temperature, and live humidity.</li>
+    <li><code>show_access_log()</code> Displays the last three access attempt results for 3 seconds before returning to the main screen.</li>
+  </ul>
+
+  <h3>3.3 Program Flowchart</h3>
   <div class="placeholder">
-    <strong>Figure 3 - Main Program Flowchart</strong>
+    <strong>Figure 4 - Main Program Flowchart</strong>
     Replace with your flowchart image
   </div>
 
-  <h3>3.3 Main Loop Logic</h3>
+  <h3>3.4 Main Loop Logic</h3>
   <div class="flow">
     <div class="flow-step" data-n="1">
-      <div><div class="flow-step-title">Environment Refresh</div><div class="flow-step-desc">Every 3 seconds, dht11_read() updates temperature and humidity. If temperature &gt; 35 °C, yellow LED toggles continuously (~0.17 Hz blink).</div></div>
+      <div><div class="flow-step-title">Environment Refresh</div><div class="flow-step-desc">Every 3 seconds, dht11_read() updates temperature and humidity. If temperature &gt; 35 C, the yellow LED toggles continuously to produce a blink effect.</div></div>
     </div>
     <div class="flow-step" data-n="2">
-      <div><div class="flow-step-title">Lockout Handling</div><div class="flow-step-desc">If locked_out is true, remaining seconds are computed from the hardware timer and displayed on the OLED. Keypad input is skipped entirely.</div></div>
+      <div><div class="flow-step-title">Lockout Handling</div><div class="flow-step-desc">If locked_out is true, remaining seconds are computed from the hardware timer and displayed on the OLED. Keypad input is skipped entirely via continue.</div></div>
     </div>
     <div class="flow-step" data-n="3">
-      <div><div class="flow-step-title">Admin Mode</div><div class="flow-step-desc">If the onboard button reads LOW (with 50 ms debounce), the system prompts for the current PIN before entering change_pin_mode().</div></div>
+      <div><div class="flow-step-title">Admin Mode</div><div class="flow-step-desc">If the onboard button reads LOW (with 50 ms debounce), the system requests the current PIN before entering change_pin_mode().</div></div>
     </div>
     <div class="flow-step" data-n="4">
-      <div><div class="flow-step-title">Keypad Processing</div><div class="flow-step-desc">A = show access log &nbsp;|&nbsp; # = confirm PIN &nbsp;|&nbsp; * = clear entry &nbsp;|&nbsp; 0–9 = append digit to PIN buffer (max 4 characters).</div></div>
+      <div><div class="flow-step-title">Keypad Processing</div><div class="flow-step-desc">A = show access log &nbsp;|&nbsp; # = confirm PIN entry &nbsp;|&nbsp; * = clear entry &nbsp;|&nbsp; 0-9 = append digit to PIN buffer (max 4 characters).</div></div>
     </div>
   </div>
 
-  <h3>3.4 Key Code Snippets</h3>
+  <h3>3.5 Key Code Snippets</h3>
 
   <h4>DHT11 Read Function</h4>
   <div class="code-block">
     <span class="code-label">main.cpp</span>
     <pre><span class="typ">bool</span> <span class="fn">dht11_read</span>(<span class="typ">float</span> &temp, <span class="typ">float</span> &hum) {
     <span class="typ">uint8_t</span> data[<span class="num">5</span>] = {<span class="num">0</span>};
+    <span class="cm">// Step 1: Send start signal</span>
     dht_pin.<span class="fn">output</span>(); dht_pin = <span class="num">0</span>; <span class="fn">thread_sleep_for</span>(<span class="num">18</span>);
     dht_pin = <span class="num">1</span>; <span class="fn">wait_us</span>(<span class="num">30</span>); dht_pin.<span class="fn">input</span>();
-    <span class="cm">// Wait for sensor acknowledgement</span>
+    <span class="cm">// Step 2: Wait for sensor acknowledgement</span>
     <span class="kw">int</span> t = <span class="num">10000</span>;
-    <span class="kw">while</span> (dht_pin == <span class="num">1</span> && t--); <span class="kw">if</span> (t &lt;= <span class="num">0</span>) <span class="kw">return</span> <span class="kw">false</span>;
-    t = <span class="num">10000</span>;
-    <span class="kw">while</span> (dht_pin == <span class="num">0</span> && t--); <span class="kw">if</span> (t &lt;= <span class="num">0</span>) <span class="kw">return</span> <span class="kw">false</span>;
-    <span class="cm">// Receive 40 bits</span>
+    <span class="kw">while</span> (dht_pin == <span class="num">1</span> && t--) {}
+    <span class="kw">if</span> (t &lt;= <span class="num">0</span>) <span class="kw">return false</span>;
+    t = <span class="num">10000</span>; <span class="kw">while</span> (dht_pin == <span class="num">0</span> && t--) {}
+    <span class="kw">if</span> (t &lt;= <span class="num">0</span>) <span class="kw">return false</span>;
+    t = <span class="num">10000</span>; <span class="kw">while</span> (dht_pin == <span class="num">1</span> && t--) {}
+    <span class="kw">if</span> (t &lt;= <span class="num">0</span>) <span class="kw">return false</span>;
+    <span class="cm">// Step 3: Read 40 bits</span>
     <span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">0</span>; i &lt; <span class="num">40</span>; i++) {
-        t = <span class="num">10000</span>; <span class="kw">while</span> (dht_pin == <span class="num">0</span> && t--);
+        t = <span class="num">10000</span>; <span class="kw">while</span> (dht_pin == <span class="num">0</span> && t--) {}
         <span class="fn">wait_us</span>(<span class="num">35</span>);
         <span class="kw">if</span> (dht_pin == <span class="num">1</span>) data[i/<span class="num">8</span>] |= (<span class="num">1</span> &lt;&lt; (<span class="num">7</span> - (i%<span class="num">8</span>)));
-        t = <span class="num">10000</span>; <span class="kw">while</span> (dht_pin == <span class="num">1</span> && t--);
+        t = <span class="num">10000</span>; <span class="kw">while</span> (dht_pin == <span class="num">1</span> && t--) {}
     }
-    <span class="cm">// Checksum validation</span>
-    <span class="kw">if</span> (data[<span class="num">4</span>] != ((data[<span class="num">0</span>]+data[<span class="num">1</span>]+data[<span class="num">2</span>]+data[<span class="num">3</span>]) & <span class="num">0xFF</span>))
-        <span class="kw">return</span> <span class="kw">false</span>;
+    <span class="cm">// Step 4: Validate checksum</span>
+    <span class="typ">uint8_t</span> checksum = (data[<span class="num">0</span>]+data[<span class="num">1</span>]+data[<span class="num">2</span>]+data[<span class="num">3</span>]) & <span class="num">0xFF</span>;
+    <span class="kw">if</span> (data[<span class="num">4</span>] != checksum) <span class="kw">return false</span>;
+    <span class="cm">// Step 5: Convert data</span>
     hum  = data[<span class="num">0</span>] + data[<span class="num">1</span>] * <span class="num">0.1f</span>;
     temp = data[<span class="num">2</span>] + data[<span class="num">3</span>] * <span class="num">0.1f</span>;
-    <span class="kw">return</span> <span class="kw">true</span>;
+    <span class="kw">return true</span>;
 }</pre>
   </div>
 
@@ -583,15 +429,14 @@
   <div class="code-block">
     <span class="code-label">main.cpp</span>
     <pre><span class="typ">char</span> <span class="fn">keypad_read</span>() {
-    DigitalOut *rows[<span class="num">4</span>] = {&r1, &r2, &r3, &r4};
-    DigitalIn  *cols[<span class="num">4</span>] = {&c1, &c2, &c3, &c4};
+    <span class="typ">DigitalOut</span> *rows[<span class="num">4</span>] = {&r1, &r2, &r3, &r4};
+    <span class="typ">DigitalIn</span>  *cols[<span class="num">4</span>] = {&c1, &c2, &c3, &c4};
     <span class="kw">for</span> (<span class="kw">int</span> r = <span class="num">0</span>; r &lt; <span class="num">4</span>; r++) {
         r1=<span class="num">0</span>; r2=<span class="num">0</span>; r3=<span class="num">0</span>; r4=<span class="num">0</span>;
-        *rows[r] = <span class="num">1</span>;
-        <span class="fn">wait_us</span>(<span class="num">100</span>);
+        *rows[r] = <span class="num">1</span>; <span class="fn">wait_us</span>(<span class="num">100</span>);
         <span class="kw">for</span> (<span class="kw">int</span> c = <span class="num">0</span>; c &lt; <span class="num">4</span>; c++) {
             <span class="kw">if</span> (*cols[c] == <span class="num">1</span>) {
-                <span class="kw">while</span> (*cols[c] == <span class="num">1</span>); <span class="cm">// wait for release</span>
+                <span class="kw">while</span> (*cols[c] == <span class="num">1</span>) {}
                 <span class="kw">return</span> keymap[r][c];
             }
         }
@@ -600,50 +445,64 @@
 }</pre>
   </div>
 
-  <h4>Access Grant &amp; Deny Logic</h4>
+  <h4>Access Grant and Deny Logic</h4>
   <div class="code-block">
     <span class="code-label">main.cpp</span>
     <pre><span class="typ">void</span> <span class="fn">grant_access</span>() {
     occupied = !occupied;
-    <span class="fn">log_attempt</span>(<span class="num">1</span>);            <span class="cm">// 1 = GRANTED</span>
+    <span class="fn">log_attempt</span>(<span class="num">1</span>);
     led_green = <span class="num">1</span>; led_red = <span class="num">0</span>; led_yellow = <span class="num">0</span>;
     <span class="fn">oled_clear</span>();
     <span class="fn">oled_print</span>(<span class="num">0</span>, occupied ? <span class="str">"LAB OCCUPIED"</span> : <span class="str">"LAB VACANT"</span>);
     <span class="fn">oled_print</span>(<span class="num">1</span>, <span class="str">"ACCESS GRANTED"</span>);
+    <span class="fn">oled_print</span>(<span class="num">2</span>, <span class="str">"WELCOME"</span>);
     <span class="fn">thread_sleep_for</span>(<span class="num">3000</span>);
     led_green = <span class="num">0</span>; wrong_attempts = <span class="num">0</span>;
     <span class="fn">reset_entry</span>(); <span class="fn">show_main_screen</span>();
 }
 
 <span class="typ">void</span> <span class="fn">deny_access</span>(<span class="typ">bool</span> overheat) {
-    <span class="fn">log_attempt</span>(overheat ? <span class="num">3</span> : <span class="num">2</span>);  <span class="cm">// 2=DENIED 3=OVERHEAT</span>
-    led_red = <span class="num">1</span>; led_green = <span class="num">0</span>; wrong_attempts++;
+    <span class="fn">log_attempt</span>(overheat ? <span class="num">3</span> : <span class="num">2</span>);
+    led_red = <span class="num">1</span>; led_green = <span class="num">0</span>;
+    <span class="fn">oled_clear</span>();
+    <span class="fn">oled_print</span>(<span class="num">0</span>, occupied ? <span class="str">"LAB OCCUPIED"</span> : <span class="str">"LAB VACANT"</span>);
     <span class="kw">if</span> (overheat) {
         <span class="fn">oled_print</span>(<span class="num">1</span>, <span class="str">"ACCESS DENIED"</span>);
         <span class="fn">oled_print</span>(<span class="num">2</span>, <span class="str">"OVERHEAT RISK"</span>);
         led_yellow = <span class="num">1</span>;
-    } <span class="kw">else if</span> (wrong_attempts &gt;= <span class="num">3</span>) {
-        <span class="fn">oled_print</span>(<span class="num">1</span>, <span class="str">"LOCKED 30S"</span>);
-        locked_out = <span class="kw">true</span>;
-        lockout_timer.<span class="fn">reset</span>(); lockout_timer.<span class="fn">start</span>();
+    } <span class="kw">else</span> {
+        wrong_attempts++;
+        <span class="kw">if</span> (wrong_attempts >= <span class="num">3</span>) {
+            <span class="fn">oled_print</span>(<span class="num">1</span>, <span class="str">"LOCKED 30S"</span>);
+            locked_out = <span class="kw">true</span>;
+            lockout_timer.<span class="fn">reset</span>(); lockout_timer.<span class="fn">start</span>();
+        } <span class="kw">else</span> {
+            <span class="typ">char</span> msg[<span class="num">17</span>] = <span class="str">"WRONG X LEFT"</span>;
+            msg[<span class="num">6</span>] = <span class="str">'0'</span> + (<span class="num">3</span> - wrong_attempts);
+            <span class="fn">oled_print</span>(<span class="num">1</span>, msg);
+        }
     }
+    <span class="fn">thread_sleep_for</span>(<span class="num">2000</span>);
+    led_red = <span class="num">0</span>; led_yellow = <span class="num">0</span>;
+    <span class="fn">reset_entry</span>();
+    <span class="kw">if</span> (!locked_out) <span class="fn">show_main_screen</span>();
 }</pre>
   </div>
 
-  <h4>PIN Verification</h4>
+  <h4>PIN Verification Flow</h4>
   <div class="code-block">
     <span class="code-label">main.cpp</span>
     <pre><span class="cm">// Inside main loop - '#' key handler</span>
-<span class="kw">else if</span> (key == <span class="str">'#'</span>) {
+} <span class="kw">else if</span> (key == <span class="str">'#'</span>) {
     <span class="kw">if</span> (pin_index == <span class="num">4</span>) {
         entered_pin[<span class="num">4</span>] = <span class="str">'\0'</span>;
         <span class="kw">if</span> (<span class="fn">check_pin</span>()) {
             <span class="kw">if</span> (temperature > <span class="num">35.0f</span>)
-                <span class="fn">deny_access</span>(<span class="kw">true</span>);   <span class="cm">// correct PIN, room too hot</span>
+                <span class="fn">deny_access</span>(<span class="kw">true</span>);
             <span class="kw">else</span>
-                <span class="fn">grant_access</span>();       <span class="cm">// correct PIN + safe temp</span>
+                <span class="fn">grant_access</span>();
         } <span class="kw">else</span> {
-            <span class="fn">deny_access</span>(<span class="kw">false</span>);     <span class="cm">// wrong PIN</span>
+            <span class="fn">deny_access</span>(<span class="kw">false</span>);
         }
     }
 }</pre>
@@ -655,49 +514,62 @@
 <section id="outcomes">
 <div class="wrap">
   <div class="section-label">Section 4</div>
-  <h2>Project Outcomes &amp; Accomplishments</h2>
+  <h2>Project Outcomes and Accomplishments</h2>
 
   <h3>4.1 Testing Procedure</h3>
-  <p>Hardware testing was conducted by systematically exercising each functional scenario on the physical NUCLEO-F401RE prototype. Each test case was executed a minimum of three times to confirm consistent behaviour. The DHT11 threshold test was performed by warming the sensor with a heat source to raise the temperature above 35 °C. PIN lockout was triggered by deliberately entering three consecutive wrong PINs and observing the countdown. Admin mode was verified by holding the button, entering the current PIN, setting a new PIN, and confirming the new PIN grants access while the old one does not.</p>
+  <p>Hardware testing was conducted by systematically exercising each functional scenario of the system on the physical NUCLEO-F401RE prototype. Each test case was executed a minimum of three times to confirm consistent and repeatable behaviour. The DHT11 threshold test was conducted by gently warming the sensor with a heat source to bring the temperature reading above 35 C and observing the system response. PIN lockout was triggered by deliberately entering three consecutive wrong PINs and observing the 30-second countdown on the OLED. Admin mode was tested by pressing and holding the onboard button, entering the correct current PIN, and setting a new PIN, then verifying that the new PIN grants access while the old PIN is rejected.</p>
 
   <h3>4.2 Test Results</h3>
   <div class="table-wrap">
     <table>
       <thead><tr><th>Test Scenario</th><th>Expected Behaviour</th><th>Result</th></tr></thead>
       <tbody>
-        <tr><td>Correct PIN + T ≤ 35 °C</td><td>Green LED ON, ACCESS GRANTED, occupancy toggles</td><td><span class="pass">Pass</span></td></tr>
-        <tr><td>Correct PIN + T &gt; 35 °C</td><td>Red + Yellow LED ON, ACCESS DENIED OVERHEAT</td><td><span class="pass">Pass</span></td></tr>
+        <tr><td>Correct PIN + T &le; 35 C</td><td>Green LED ON, ACCESS GRANTED, occupancy toggles</td><td><span class="pass">Pass</span></td></tr>
+        <tr><td>Correct PIN + T &gt; 35 C</td><td>Red + Yellow LED ON, ACCESS DENIED OVERHEAT</td><td><span class="pass">Pass</span></td></tr>
         <tr><td>Wrong PIN (1st/2nd attempt)</td><td>Red LED ON, attempts remaining shown on OLED</td><td><span class="pass">Pass</span></td></tr>
         <tr><td>Wrong PIN (3rd attempt)</td><td>Red LED ON, 30-second lockout countdown on OLED</td><td><span class="pass">Pass</span></td></tr>
         <tr><td>Lockout expiry</td><td>System unlocks, wrong attempt counter resets</td><td><span class="pass">Pass</span></td></tr>
         <tr><td>Press * to clear entry</td><td>PIN buffer cleared, OLED resets to ENTER PIN</td><td><span class="pass">Pass</span></td></tr>
         <tr><td>Press A to view log</td><td>Last 3 attempts shown on OLED for 3 seconds</td><td><span class="pass">Pass</span></td></tr>
-        <tr><td>Admin mode – correct PIN</td><td>New PIN accepted and stored</td><td><span class="pass">Pass</span></td></tr>
-        <tr><td>Admin mode – wrong PIN</td><td>WRONG PIN shown, admin mode rejected</td><td><span class="pass">Pass</span></td></tr>
-        <tr><td>T &gt; 35 °C idle</td><td>Yellow LED blinks continuously (~0.17 Hz)</td><td><span class="pass">Pass</span></td></tr>
+        <tr><td>Admin mode - correct PIN</td><td>New PIN accepted and stored</td><td><span class="pass">Pass</span></td></tr>
+        <tr><td>Admin mode - wrong PIN</td><td>WRONG PIN shown, admin mode rejected</td><td><span class="pass">Pass</span></td></tr>
+        <tr><td>T &gt; 35 C idle</td><td>Yellow LED blinks continuously</td><td><span class="pass">Pass</span></td></tr>
         <tr><td>Humidity &gt; 80%</td><td>Humidity warning shown on OLED row 3</td><td><span class="pass">Pass</span></td></tr>
       </tbody>
     </table>
   </div>
 
   <h3>4.3 Observed System Behaviour</h3>
-  <p>The SSD1306 OLED display correctly rendered all system states across its four rows. Row 0 permanently showed occupancy status. Row 1 updated contextually to show PIN prompts, access results, or lockout countdown. Rows 2 and 3 refreshed live temperature and humidity every 3 seconds. The DHT11 sensor produced stable readings throughout; the built-in checksum validation discarded corrupted reads without interrupting the display. The keypad scanning algorithm correctly identified all 16 keys without false triggers, with the 100 µs settle delay per row sufficient to eliminate contact bounce.</p>
+  <div class="obs-grid">
+    <div class="obs-card">
+      <div class="obs-card-head">🖥️ OLED Display</div>
+      <p>All system states rendered correctly across four rows. Row 0 permanently displayed occupancy status. Row 1 updated contextually for PIN prompts, access results, or lockout countdown. Rows 2-3 refreshed live temperature and humidity every 3 seconds. During lockout, the countdown updated smoothly on every main loop iteration.</p>
+    </div>
+    <div class="obs-card">
+      <div class="obs-card-head">🌡️ DHT11 Sensor Accuracy</div>
+      <p>The DHT11 produced stable, consistent readings throughout testing. Reads were triggered every 3 seconds to respect the sensor's minimum polling interval. The checksum validation in dht11_read() reliably detected and discarded corrupted reads. On rare read failures, previously valid values were retained on the OLED without interruption.</p>
+    </div>
+    <div class="obs-card">
+      <div class="obs-card-head">⌨️ Keypad Response</div>
+      <p>All 16 keys were correctly identified without false triggers during repeated testing. Key release detection - polling the column line until it returns LOW - prevented multi-registration of a single press. The 100 us settle delay per row was sufficient to eliminate contact bounce artefacts.</p>
+    </div>
+  </div>
 
   <h3>4.4 Achievements</h3>
   <div class="card-grid">
-    <div class="card"><div class="card-icon">✅</div><div class="card-title">Full Integration</div><div class="card-desc">Five independent peripherals successfully integrated into a single coherent embedded firmware.</div></div>
-    <div class="card"><div class="card-icon">🔐</div><div class="card-title">Dual-Condition Policy</div><div class="card-desc">Correct PIN AND safe temperature enforced reliably across all test scenarios.</div></div>
-    <div class="card"><div class="card-icon">📋</div><div class="card-title">Access Logging</div><div class="card-desc">Rolling 3-entry access log, occupancy tracking, and admin PIN change all verified in hardware.</div></div>
-    <div class="card"><div class="card-icon">📦</div><div class="card-title">No External Libraries</div><div class="card-desc">All drivers - OLED, DHT11, keypad - written from scratch using only Mbed OS built-ins.</div></div>
+    <div class="card"><div class="card-icon">✅</div><div class="card-title">Full Integration</div><div class="card-desc">Five independent peripherals integrated into a single coherent embedded firmware with no external libraries.</div></div>
+    <div class="card"><div class="card-icon">🔐</div><div class="card-title">Dual-Condition Policy</div><div class="card-desc">Correct PIN and safe temperature enforced reliably across all 11 test scenarios.</div></div>
+    <div class="card"><div class="card-icon">📋</div><div class="card-title">Access Logging</div><div class="card-desc">Rolling 3-entry access log, occupancy tracking, admin PIN change, and lockout countdown all verified in hardware.</div></div>
+    <div class="card"><div class="card-icon">🔧</div><div class="card-title">Practical Application</div><div class="card-desc">Demonstrates GPIO, I2C, hardware timers, one-wire digital sensing, and matrix keypad scanning in a real embedded context.</div></div>
   </div>
 
-  <h3>4.5 Limitations &amp; Possible Improvements</h3>
+  <h3>4.5 Limitations and Possible Improvements</h3>
   <ul class="limit-list">
-    <li>DHT11 accuracy is ±2 °C and ±5% RH. Replacing with a DHT22 or SHT31 would improve precision for safety-critical thresholds.</li>
-    <li>The access log is stored in volatile RAM and is lost on power-off. Persisting to EEPROM or flash would allow historical records to be retained.</li>
-    <li>The OLED font covers only uppercase letters and digits. Extending to lowercase and special characters would improve readability.</li>
-    <li>The lockout timer uses a polling approach in the main loop. A hardware timer interrupt would provide a more precise and CPU-independent countdown.</li>
-    <li>Only a single shared PIN is supported. A multi-user system with individual PINs and identifiers would significantly increase real-world utility.</li>
+    <li>The DHT11 has +/-2 C and +/-5% RH accuracy. The 35 C threshold is set for demonstration; real deployments would typically use 40-45 C. Replacing with a DHT22 or SHT31 would improve precision.</li>
+    <li>The access log is stored in volatile RAM and is lost on power-off. Persisting to EEPROM or non-volatile flash would allow historical records to be retained.</li>
+    <li>The OLED font covers only uppercase letters and digits. Extending to lowercase and special characters would improve display readability.</li>
+    <li>The lockout timer uses a polling-based approach in the main loop. A hardware timer interrupt would provide a more precise and CPU-independent countdown.</li>
+    <li>Only a single shared PIN is supported. A multi-user system with individual PINs and unique identifiers per user would significantly increase real-world utility.</li>
   </ul>
 </div>
 </section>
@@ -707,8 +579,10 @@
 <div class="wrap">
   <div class="section-label">Conclusion</div>
   <h2>Conclusion</h2>
-  <p>This project successfully demonstrates the design and implementation of a complete embedded access control system on the NUCLEO-F401RE microcontroller using the ARM Mbed development environment. The system integrates a 4×4 matrix keypad, DHT11 environmental sensor, SSD1306 OLED display, three LED indicators, and an onboard push button to deliver a functional and multi-featured access control solution.</p>
-  <p>All six project objectives were met. PIN-based authentication with lockout protection, environment-conditional access denial, real-time temperature and humidity display, occupancy tracking, access logging, and admin PIN reconfiguration were all implemented and verified in hardware. The use of Mbed OS allowed rapid development of complex multi-peripheral firmware while maintaining structured, readable, and modular code. The project demonstrates how microcontroller-based embedded systems can solve real-world engineering problems in security and environmental monitoring.</p>
+  <p>This project successfully demonstrates the design and implementation of a complete embedded access control system on the NUCLEO-F401RE microcontroller using the ARM Mbed development environment. The system integrates a 4x4 matrix keypad, DHT11 environmental sensor, SSD1306 OLED display, three LED indicators, and an onboard push button to deliver a functional and multi-featured access control solution.</p>
+  <p>All six project objectives were met. PIN-based authentication with lockout protection, environment-conditional access denial, real-time temperature and humidity display, occupancy tracking, access logging, and admin PIN reconfiguration were all implemented and verified in hardware. The use of Mbed OS allowed rapid development of complex multi-peripheral firmware while maintaining structured, readable, and modular code. The project demonstrates how microcontroller-based embedded systems can be applied to solve real-world engineering problems in security and environmental monitoring, and reinforces the practical skills developed throughout the EFB 2073 practical tasks completed previously.</p>
+</div>
+</section>
 
 <!-- APPENDIX -->
 <section id="appendix">
@@ -719,31 +593,22 @@
     <span class="code-label">main.cpp</span>
     <pre><span class="cm">#include "mbed.h"</span>
 
-<span class="cm">// OLED (I2C)</span>
 <span class="typ">I2C</span> i2c(PB_7, PB_6);
 <span class="kw">#define</span> OLED_ADDR (<span class="num">0x3C</span> &lt;&lt; <span class="num">1</span>)
 
-<span class="cm">// DHT11</span>
 <span class="typ">DigitalInOut</span> dht_pin(PA_8);
-
-<span class="cm">// Keypad</span>
 <span class="typ">DigitalOut</span> r1(PA_0), r2(PA_1), r3(PA_4), r4(PB_0);
 <span class="typ">DigitalIn</span>  c1(PC_1,PullDown), c2(PC_0,PullDown),
            c3(PB_3,PullDown), c4(PB_5,PullDown);
-
-<span class="cm">// LEDs</span>
 <span class="typ">DigitalOut</span> led_green(PC_8), led_red(PC_6), led_yellow(PC_5);
+<span class="typ">DigitalIn</span>  btn(PC_13, PullUp);
 
-<span class="cm">// Button</span>
-<span class="typ">DigitalIn</span> btn(PC_13, PullUp);
-
-<span class="cm">// System state</span>
-<span class="typ">char</span> correct_pin[<span class="num">5</span>] = <span class="str">"1234"</span>;
-<span class="typ">char</span> entered_pin[<span class="num">5</span>] = <span class="str">""</span>;
-<span class="typ">int</span>  pin_index = <span class="num">0</span>, wrong_attempts = <span class="num">0</span>;
-<span class="typ">bool</span> locked_out = <span class="kw">false</span>, occupied = <span class="kw">false</span>;
+<span class="typ">char</span>  correct_pin[<span class="num">5</span>] = <span class="str">"1234"</span>;
+<span class="typ">char</span>  entered_pin[<span class="num">5</span>] = <span class="str">""</span>;
+<span class="typ">int</span>   pin_index = <span class="num">0</span>, wrong_attempts = <span class="num">0</span>;
+<span class="typ">bool</span>  locked_out = <span class="kw">false</span>, occupied = <span class="kw">false</span>;
 <span class="typ">float</span> temperature = <span class="num">0.0f</span>, humidity = <span class="num">0.0f</span>;
-<span class="typ">int</span>  access_log[<span class="num">3</span>] = {<span class="num">0</span>, <span class="num">0</span>, <span class="num">0</span>};
+<span class="typ">int</span>   access_log[<span class="num">3</span>] = {<span class="num">0</span>, <span class="num">0</span>, <span class="num">0</span>};
 <span class="typ">Timer</span> lockout_timer, env_timer;
 
 <span class="kw">const</span> <span class="typ">char</span> keymap[<span class="num">4</span>][<span class="num">4</span>] = {
@@ -751,29 +616,223 @@
     {<span class="str">'7'</span>,<span class="str">'8'</span>,<span class="str">'9'</span>,<span class="str">'C'</span>}, {<span class="str">'*'</span>,<span class="str">'0'</span>,<span class="str">'#'</span>,<span class="str">'D'</span>}
 };
 
-<span class="cm">// ... font tables, OLED, DHT11, keypad, access logic ...</span>
-<span class="cm">// See Section 3.4 for key function implementations.</span>
+<span class="kw">static const</span> <span class="typ">uint8_t</span> FONT[<span class="num">26</span>][<span class="num">5</span>] = {
+    {<span class="num">0x7E</span>,<span class="num">0x11</span>,<span class="num">0x11</span>,<span class="num">0x11</span>,<span class="num">0x7E</span>},{<span class="num">0x7F</span>,<span class="num">0x49</span>,<span class="num">0x49</span>,<span class="num">0x49</span>,<span class="num">0x36</span>},
+    {<span class="num">0x3E</span>,<span class="num">0x41</span>,<span class="num">0x41</span>,<span class="num">0x41</span>,<span class="num">0x22</span>},{<span class="num">0x7F</span>,<span class="num">0x41</span>,<span class="num">0x41</span>,<span class="num">0x22</span>,<span class="num">0x1C</span>},
+    {<span class="num">0x7F</span>,<span class="num">0x49</span>,<span class="num">0x49</span>,<span class="num">0x49</span>,<span class="num">0x41</span>},{<span class="num">0x7F</span>,<span class="num">0x09</span>,<span class="num">0x09</span>,<span class="num">0x09</span>,<span class="num">0x01</span>},
+    {<span class="num">0x3E</span>,<span class="num">0x41</span>,<span class="num">0x49</span>,<span class="num">0x49</span>,<span class="num">0x7A</span>},{<span class="num">0x7F</span>,<span class="num">0x08</span>,<span class="num">0x08</span>,<span class="num">0x08</span>,<span class="num">0x7F</span>},
+    {<span class="num">0x00</span>,<span class="num">0x41</span>,<span class="num">0x7F</span>,<span class="num">0x41</span>,<span class="num">0x00</span>},{<span class="num">0x20</span>,<span class="num">0x40</span>,<span class="num">0x41</span>,<span class="num">0x3F</span>,<span class="num">0x01</span>},
+    {<span class="num">0x7F</span>,<span class="num">0x08</span>,<span class="num">0x14</span>,<span class="num">0x22</span>,<span class="num">0x41</span>},{<span class="num">0x7F</span>,<span class="num">0x40</span>,<span class="num">0x40</span>,<span class="num">0x40</span>,<span class="num">0x40</span>},
+    {<span class="num">0x7F</span>,<span class="num">0x02</span>,<span class="num">0x0C</span>,<span class="num">0x02</span>,<span class="num">0x7F</span>},{<span class="num">0x7F</span>,<span class="num">0x04</span>,<span class="num">0x08</span>,<span class="num">0x10</span>,<span class="num">0x7F</span>},
+    {<span class="num">0x3E</span>,<span class="num">0x41</span>,<span class="num">0x41</span>,<span class="num">0x41</span>,<span class="num">0x3E</span>},{<span class="num">0x7F</span>,<span class="num">0x09</span>,<span class="num">0x09</span>,<span class="num">0x09</span>,<span class="num">0x06</span>},
+    {<span class="num">0x3E</span>,<span class="num">0x41</span>,<span class="num">0x51</span>,<span class="num">0x21</span>,<span class="num">0x5E</span>},{<span class="num">0x7F</span>,<span class="num">0x09</span>,<span class="num">0x19</span>,<span class="num">0x29</span>,<span class="num">0x46</span>},
+    {<span class="num">0x46</span>,<span class="num">0x49</span>,<span class="num">0x49</span>,<span class="num">0x49</span>,<span class="num">0x31</span>},{<span class="num">0x01</span>,<span class="num">0x01</span>,<span class="num">0x7F</span>,<span class="num">0x01</span>,<span class="num">0x01</span>},
+    {<span class="num">0x3F</span>,<span class="num">0x40</span>,<span class="num">0x40</span>,<span class="num">0x40</span>,<span class="num">0x3F</span>},{<span class="num">0x1F</span>,<span class="num">0x20</span>,<span class="num">0x40</span>,<span class="num">0x20</span>,<span class="num">0x1F</span>},
+    {<span class="num">0x3F</span>,<span class="num">0x40</span>,<span class="num">0x38</span>,<span class="num">0x40</span>,<span class="num">0x3F</span>},{<span class="num">0x63</span>,<span class="num">0x14</span>,<span class="num">0x08</span>,<span class="num">0x14</span>,<span class="num">0x63</span>},
+    {<span class="num">0x07</span>,<span class="num">0x08</span>,<span class="num">0x70</span>,<span class="num">0x08</span>,<span class="num">0x07</span>},{<span class="num">0x61</span>,<span class="num">0x51</span>,<span class="num">0x49</span>,<span class="num">0x45</span>,<span class="num">0x43</span>}
+};
+<span class="kw">static const</span> <span class="typ">uint8_t</span> DIGITS[<span class="num">10</span>][<span class="num">5</span>] = {
+    {<span class="num">0x3E</span>,<span class="num">0x51</span>,<span class="num">0x49</span>,<span class="num">0x45</span>,<span class="num">0x3E</span>},{<span class="num">0x00</span>,<span class="num">0x42</span>,<span class="num">0x7F</span>,<span class="num">0x40</span>,<span class="num">0x00</span>},
+    {<span class="num">0x42</span>,<span class="num">0x61</span>,<span class="num">0x51</span>,<span class="num">0x49</span>,<span class="num">0x46</span>},{<span class="num">0x21</span>,<span class="num">0x41</span>,<span class="num">0x45</span>,<span class="num">0x4B</span>,<span class="num">0x31</span>},
+    {<span class="num">0x18</span>,<span class="num">0x14</span>,<span class="num">0x12</span>,<span class="num">0x7F</span>,<span class="num">0x10</span>},{<span class="num">0x27</span>,<span class="num">0x45</span>,<span class="num">0x45</span>,<span class="num">0x45</span>,<span class="num">0x39</span>},
+    {<span class="num">0x3C</span>,<span class="num">0x4A</span>,<span class="num">0x49</span>,<span class="num">0x49</span>,<span class="num">0x30</span>},{<span class="num">0x01</span>,<span class="num">0x71</span>,<span class="num">0x09</span>,<span class="num">0x05</span>,<span class="num">0x03</span>},
+    {<span class="num">0x36</span>,<span class="num">0x49</span>,<span class="num">0x49</span>,<span class="num">0x49</span>,<span class="num">0x36</span>},{<span class="num">0x06</span>,<span class="num">0x49</span>,<span class="num">0x49</span>,<span class="num">0x29</span>,<span class="num">0x1E</span>}
+};
+<span class="kw">static const</span> <span class="typ">uint8_t</span> COLON[<span class="num">5</span>] = {<span class="num">0x00</span>,<span class="num">0x36</span>,<span class="num">0x36</span>,<span class="num">0x00</span>,<span class="num">0x00</span>};
+<span class="kw">static const</span> <span class="typ">uint8_t</span> DOT[<span class="num">5</span>]   = {<span class="num">0x00</span>,<span class="num">0x60</span>,<span class="num">0x60</span>,<span class="num">0x00</span>,<span class="num">0x00</span>};
+<span class="kw">static const</span> <span class="typ">uint8_t</span> STAR[<span class="num">5</span>]  = {<span class="num">0x36</span>,<span class="num">0x08</span>,<span class="num">0x7F</span>,<span class="num">0x08</span>,<span class="num">0x36</span>};
+<span class="kw">static const</span> <span class="typ">uint8_t</span> BLANK[<span class="num">5</span>] = {<span class="num">0x00</span>,<span class="num">0x00</span>,<span class="num">0x00</span>,<span class="num">0x00</span>,<span class="num">0x00</span>};
+<span class="kw">static const</span> <span class="typ">uint8_t</span> PERC[<span class="num">5</span>]  = {<span class="num">0x23</span>,<span class="num">0x13</span>,<span class="num">0x08</span>,<span class="num">0x64</span>,<span class="num">0x62</span>};
 
-<span class="typ">int</span> <span class="fn">main</span>() {
+<span class="typ">void</span> <span class="fn">oled_cmd</span>(<span class="typ">uint8_t</span> c) { <span class="typ">char</span> b[<span class="num">2</span>]={<span class="num">0x00</span>,(<span class="typ">char</span>)c}; i2c.<span class="fn">write</span>(OLED_ADDR,b,<span class="num">2</span>); }
+<span class="typ">void</span> <span class="fn">oled_dat</span>(<span class="typ">uint8_t</span> d) { <span class="typ">char</span> b[<span class="num">2</span>]={<span class="num">0x40</span>,(<span class="typ">char</span>)d}; i2c.<span class="fn">write</span>(OLED_ADDR,b,<span class="num">2</span>); }
+<span class="typ">void</span> <span class="fn">oled_char</span>(<span class="typ">char</span> c) {
+    <span class="kw">const</span> <span class="typ">uint8_t</span> *p = BLANK;
+    <span class="kw">if</span>      (c>=<span class="str">'A'</span>&&c<=<span class="str">'Z'</span>) p=FONT[c-<span class="str">'A'</span>];
+    <span class="kw">else if</span> (c>=<span class="str">'0'</span>&&c<=<span class="str">'9'</span>) p=DIGITS[c-<span class="str">'0'</span>];
+    <span class="kw">else if</span> (c==<span class="str">':'</span>) p=COLON; <span class="kw">else if</span> (c==<span class="str">'.'</span>) p=DOT;
+    <span class="kw">else if</span> (c==<span class="str">'*'</span>) p=STAR;  <span class="kw">else if</span> (c==<span class="str">'%'</span>) p=PERC;
+    <span class="kw">for</span> (<span class="kw">int</span> i=<span class="num">0</span>;i&lt;<span class="num">5</span>;i++) <span class="fn">oled_dat</span>(p[i]); <span class="fn">oled_dat</span>(<span class="num">0x00</span>);
+}
+<span class="typ">void</span> <span class="fn">oled_set_cursor</span>(<span class="typ">uint8_t</span> row, <span class="typ">uint8_t</span> col) {
+    <span class="fn">oled_cmd</span>(<span class="num">0x21</span>); <span class="fn">oled_cmd</span>(col); <span class="fn">oled_cmd</span>(<span class="num">127</span>);
+    <span class="fn">oled_cmd</span>(<span class="num">0x22</span>); <span class="fn">oled_cmd</span>(row); <span class="fn">oled_cmd</span>(<span class="num">3</span>);
+}
+<span class="typ">void</span> <span class="fn">oled_print</span>(<span class="typ">uint8_t</span> row, <span class="kw">const</span> <span class="typ">char</span> *str) {
+    <span class="fn">oled_set_cursor</span>(row,<span class="num">0</span>); <span class="kw">while</span>(*str) <span class="fn">oled_char</span>(*str++);
+}
+<span class="typ">void</span> <span class="fn">oled_clear</span>() {
+    <span class="fn">oled_cmd</span>(<span class="num">0x21</span>); <span class="fn">oled_cmd</span>(<span class="num">0</span>); <span class="fn">oled_cmd</span>(<span class="num">127</span>);
+    <span class="fn">oled_cmd</span>(<span class="num">0x22</span>); <span class="fn">oled_cmd</span>(<span class="num">0</span>); <span class="fn">oled_cmd</span>(<span class="num">3</span>);
+    <span class="kw">for</span>(<span class="kw">int</span> i=<span class="num">0</span>;i&lt;<span class="num">512</span>;i++) <span class="fn">oled_dat</span>(<span class="num">0x00</span>);
+}
+<span class="typ">void</span> <span class="fn">oled_init</span>() {
+    <span class="typ">uint8_t</span> cmds[<span class="num">25</span>]={<span class="num">0xAE</span>,<span class="num">0xD5</span>,<span class="num">0x80</span>,<span class="num">0xA8</span>,<span class="num">0x1F</span>,<span class="num">0xD3</span>,<span class="num">0x00</span>,<span class="num">0x40</span>,
+        <span class="num">0x8D</span>,<span class="num">0x14</span>,<span class="num">0x20</span>,<span class="num">0x00</span>,<span class="num">0xA1</span>,<span class="num">0xC8</span>,<span class="num">0xDA</span>,<span class="num">0x02</span>,
+        <span class="num">0x81</span>,<span class="num">0x8F</span>,<span class="num">0xD9</span>,<span class="num">0xF1</span>,<span class="num">0xDB</span>,<span class="num">0x40</span>,<span class="num">0xA4</span>,<span class="num">0xA6</span>,<span class="num">0xAF</span>};
+    <span class="fn">thread_sleep_for</span>(<span class="num">100</span>);
+    <span class="kw">for</span>(<span class="kw">int</span> i=<span class="num">0</span>;i&lt;<span class="num">25</span>;i++) <span class="fn">oled_cmd</span>(cmds[i]);
+}
+
+<span class="typ">bool</span> <span class="fn">dht11_read</span>(<span class="typ">float</span> &temp, <span class="typ">float</span> &hum) {
+    <span class="typ">uint8_t</span> data[<span class="num">5</span>]={<span class="num">0</span>};
+    dht_pin.<span class="fn">output</span>(); dht_pin=<span class="num">0</span>; <span class="fn">thread_sleep_for</span>(<span class="num">18</span>);
+    dht_pin=<span class="num">1</span>; <span class="fn">wait_us</span>(<span class="num">30</span>); dht_pin.<span class="fn">input</span>();
+    <span class="kw">int</span> t=<span class="num">10000</span>; <span class="kw">while</span>(dht_pin==<span class="num">1</span>&&t--){} t=<span class="num">10000</span>;
+    <span class="kw">while</span>(dht_pin==<span class="num">0</span>&&t--){} t=<span class="num">10000</span>; <span class="kw">while</span>(dht_pin==<span class="num">1</span>&&t--){}
+    <span class="kw">for</span>(<span class="kw">int</span> i=<span class="num">0</span>;i&lt;<span class="num">40</span>;i++){
+        t=<span class="num">10000</span>; <span class="kw">while</span>(dht_pin==<span class="num">0</span>&&t--){}
+        <span class="fn">wait_us</span>(<span class="num">35</span>);
+        <span class="kw">if</span>(dht_pin==<span class="num">1</span>) data[i/<span class="num">8</span>]|=(<span class="num">1</span>&lt;&lt;(<span class="num">7</span>-(i%<span class="num">8</span>)));
+        t=<span class="num">10000</span>; <span class="kw">while</span>(dht_pin==<span class="num">1</span>&&t--){}
+    }
+    hum=data[<span class="num">0</span>]; temp=data[<span class="num">2</span>]; <span class="kw">return true</span>;
+}
+
+<span class="typ">char</span> <span class="fn">keypad_read</span>() {
+    <span class="typ">DigitalOut</span> *rows[<span class="num">4</span>]={&r1,&r2,&r3,&r4};
+    <span class="typ">DigitalIn</span>  *cols[<span class="num">4</span>]={&c1,&c2,&c3,&c4};
+    <span class="kw">for</span>(<span class="kw">int</span> r=<span class="num">0</span>;r&lt;<span class="num">4</span>;r++){
+        r1=<span class="num">0</span>;r2=<span class="num">0</span>;r3=<span class="num">0</span>;r4=<span class="num">0</span>; *rows[r]=<span class="num">1</span>; <span class="fn">wait_us</span>(<span class="num">100</span>);
+        <span class="kw">for</span>(<span class="kw">int</span> c=<span class="num">0</span>;c&lt;<span class="num">4</span>;c++){
+            <span class="kw">if</span>(*cols[c]==<span class="num">1</span>){ <span class="kw">while</span>(*cols[c]==<span class="num">1</span>){} <span class="kw">return</span> keymap[r][c]; }
+        }
+    }
+    <span class="kw">return</span> <span class="num">0</span>;
+}
+
+<span class="typ">void</span> <span class="fn">log_attempt</span>(<span class="kw">int</span> result){
+    access_log[<span class="num">0</span>]=access_log[<span class="num">1</span>]; access_log[<span class="num">1</span>]=access_log[<span class="num">2</span>]; access_log[<span class="num">2</span>]=result;
+}
+<span class="typ">bool</span> <span class="fn">check_pin</span>(){
+    <span class="kw">for</span>(<span class="kw">int</span> i=<span class="num">0</span>;i&lt;<span class="num">4</span>;i++) <span class="kw">if</span>(entered_pin[i]!=correct_pin[i]) <span class="kw">return false</span>;
+    <span class="kw">return true</span>;
+}
+<span class="typ">void</span> <span class="fn">reset_entry</span>(){
+    pin_index=<span class="num">0</span>; <span class="kw">for</span>(<span class="kw">int</span> i=<span class="num">0</span>;i&lt;<span class="num">5</span>;i++) entered_pin[i]=<span class="str">'\0'</span>;
+}
+<span class="typ">void</span> <span class="fn">show_main_screen</span>(){
+    <span class="typ">char</span> line[<span class="num">17</span>]; <span class="fn">oled_clear</span>();
+    <span class="fn">oled_print</span>(<span class="num">0</span>, occupied?<span class="str">"LAB OCCUPIED"</span>:<span class="str">"LAB VACANT"</span>);
+    <span class="fn">oled_print</span>(<span class="num">1</span>,<span class="str">"ENTER PIN"</span>);
+    <span class="fn">sprintf</span>(line,<span class="str">"TEMP %.1fC"</span>,temperature); <span class="fn">oled_print</span>(<span class="num">2</span>,line);
+    <span class="fn">sprintf</span>(line,<span class="str">"HUM %.0f%%"</span>,humidity);    <span class="fn">oled_print</span>(<span class="num">3</span>,line);
+}
+<span class="typ">void</span> <span class="fn">show_pin_dots</span>(){
+    <span class="typ">char</span> dots[<span class="num">17</span>]=<span class="str">"PIN "</span>;
+    <span class="kw">for</span>(<span class="kw">int</span> i=<span class="num">0</span>;i&lt;pin_index;i++) dots[<span class="num">4</span>+i]=<span class="str">'*'</span>;
+    dots[<span class="num">4</span>+pin_index]=<span class="str">'\0'</span>; <span class="fn">oled_print</span>(<span class="num">1</span>,dots);
+}
+<span class="typ">void</span> <span class="fn">show_access_log</span>(){
+    <span class="kw">const char</span>*labels[<span class="num">4</span>]={<span class="str">" "</span>,<span class="str">"OK "</span>,<span class="str">"DENY"</span>,<span class="str">"HEAT"</span>};
+    <span class="fn">oled_clear</span>(); <span class="fn">oled_print</span>(<span class="num">0</span>,<span class="str">"ACCESS LOG"</span>);
+    <span class="fn">oled_print</span>(<span class="num">1</span>,labels[access_log[<span class="num">0</span>]]);
+    <span class="fn">oled_print</span>(<span class="num">2</span>,labels[access_log[<span class="num">1</span>]]);
+    <span class="fn">oled_print</span>(<span class="num">3</span>,labels[access_log[<span class="num">2</span>]]);
+    <span class="fn">thread_sleep_for</span>(<span class="num">3000</span>); <span class="fn">show_main_screen</span>();
+}
+<span class="typ">void</span> <span class="fn">grant_access</span>(){
+    occupied=!occupied; <span class="fn">log_attempt</span>(<span class="num">1</span>);
+    led_green=<span class="num">1</span>;led_red=<span class="num">0</span>;led_yellow=<span class="num">0</span>;
+    <span class="fn">oled_clear</span>();
+    <span class="fn">oled_print</span>(<span class="num">0</span>,occupied?<span class="str">"LAB OCCUPIED"</span>:<span class="str">"LAB VACANT"</span>);
+    <span class="fn">oled_print</span>(<span class="num">1</span>,<span class="str">"ACCESS GRANTED"</span>); <span class="fn">oled_print</span>(<span class="num">2</span>,<span class="str">"WELCOME"</span>);
+    <span class="fn">thread_sleep_for</span>(<span class="num">3000</span>);
+    led_green=<span class="num">0</span>; wrong_attempts=<span class="num">0</span>; <span class="fn">reset_entry</span>(); <span class="fn">show_main_screen</span>();
+}
+<span class="typ">void</span> <span class="fn">deny_access</span>(<span class="typ">bool</span> overheat){
+    <span class="fn">log_attempt</span>(overheat?<span class="num">3</span>:<span class="num">2</span>);
+    led_red=<span class="num">1</span>;led_green=<span class="num">0</span>; <span class="fn">oled_clear</span>();
+    <span class="fn">oled_print</span>(<span class="num">0</span>,occupied?<span class="str">"LAB OCCUPIED"</span>:<span class="str">"LAB VACANT"</span>);
+    <span class="kw">if</span>(overheat){
+        <span class="fn">oled_print</span>(<span class="num">1</span>,<span class="str">"ACCESS DENIED"</span>); <span class="fn">oled_print</span>(<span class="num">2</span>,<span class="str">"OVERHEAT RISK"</span>); led_yellow=<span class="num">1</span>;
+    } <span class="kw">else</span> {
+        wrong_attempts++;
+        <span class="kw">if</span>(wrong_attempts>=<span class="num">3</span>){
+            <span class="fn">oled_print</span>(<span class="num">1</span>,<span class="str">"LOCKED 30S"</span>); locked_out=<span class="kw">true</span>;
+            lockout_timer.<span class="fn">reset</span>(); lockout_timer.<span class="fn">start</span>();
+        } <span class="kw">else</span> {
+            <span class="typ">char</span> msg[<span class="num">17</span>]=<span class="str">"WRONG X LEFT"</span>;
+            msg[<span class="num">6</span>]=<span class="str">'0'</span>+(<span class="num">3</span>-wrong_attempts); <span class="fn">oled_print</span>(<span class="num">1</span>,msg);
+        }
+    }
+    <span class="fn">thread_sleep_for</span>(<span class="num">2000</span>);
+    led_red=<span class="num">0</span>;led_yellow=<span class="num">0</span>; <span class="fn">reset_entry</span>();
+    <span class="kw">if</span>(!locked_out) <span class="fn">show_main_screen</span>();
+}
+<span class="typ">void</span> <span class="fn">change_pin_mode</span>(){
+    <span class="typ">char</span> new_pin[<span class="num">5</span>]=<span class="str">""</span>; <span class="kw">int</span> idx=<span class="num">0</span>;
+    <span class="fn">oled_clear</span>(); <span class="fn">oled_print</span>(<span class="num">0</span>,<span class="str">"ADMIN MODE"</span>); <span class="fn">oled_print</span>(<span class="num">1</span>,<span class="str">"NEW PIN"</span>);
+    <span class="kw">while</span>(idx&lt;<span class="num">4</span>){
+        <span class="typ">char</span> k=<span class="fn">keypad_read</span>();
+        <span class="kw">if</span>(k>=<span class="str">'0'</span>&&k<=<span class="str">'9'</span>){
+            new_pin[idx++]=k;
+            <span class="typ">char</span> dots[<span class="num">17</span>]=<span class="str">"NEW PIN "</span>;
+            <span class="kw">for</span>(<span class="kw">int</span> i=<span class="num">0</span>;i&lt;idx;i++) dots[<span class="num">8</span>+i]=<span class="str">'*'</span>;
+            <span class="fn">oled_print</span>(<span class="num">1</span>,dots);
+        }
+    }
+    new_pin[<span class="num">4</span>]=<span class="str">'\0'</span>; <span class="kw">for</span>(<span class="kw">int</span> i=<span class="num">0</span>;i&lt;<span class="num">5</span>;i++) correct_pin[i]=new_pin[i];
+    <span class="fn">oled_clear</span>(); <span class="fn">oled_print</span>(<span class="num">0</span>,<span class="str">"ADMIN MODE"</span>); <span class="fn">oled_print</span>(<span class="num">1</span>,<span class="str">"PIN CHANGED"</span>);
+    <span class="fn">thread_sleep_for</span>(<span class="num">2000</span>); <span class="fn">show_main_screen</span>();
+}
+
+<span class="typ">int</span> <span class="fn">main</span>(){
     i2c.<span class="fn">frequency</span>(<span class="num">100000</span>); <span class="fn">oled_init</span>();
-    led_green = <span class="num">0</span>; led_red = <span class="num">0</span>; led_yellow = <span class="num">0</span>;
-    <span class="fn">dht11_read</span>(temperature, humidity); <span class="fn">show_main_screen</span>();
+    led_green=<span class="num">0</span>;led_red=<span class="num">0</span>;led_yellow=<span class="num">0</span>;
+    <span class="fn">dht11_read</span>(temperature,humidity); <span class="fn">show_main_screen</span>();
     env_timer.<span class="fn">start</span>(); lockout_timer.<span class="fn">reset</span>();
 
-    <span class="kw">while</span> (<span class="kw">true</span>) {
-        <span class="kw">if</span> (env_timer.<span class="fn">elapsed_time</span>() >= <span class="num">3</span>s) {
-            env_timer.<span class="fn">reset</span>(); <span class="fn">dht11_read</span>(temperature, humidity);
-            led_yellow = (temperature > <span class="num">35.0f</span>) ? !led_yellow : <span class="num">0</span>;
-            <span class="kw">if</span> (!locked_out) <span class="fn">show_main_screen</span>();
+    <span class="kw">while</span>(<span class="kw">true</span>){
+        <span class="kw">if</span>(env_timer.<span class="fn">read_ms</span>()>=<span class="num">3000</span>){
+            env_timer.<span class="fn">reset</span>(); <span class="fn">dht11_read</span>(temperature,humidity);
+            led_yellow=(temperature><span class="num">35.0f</span>)?!led_yellow:<span class="num">0</span>;
+            <span class="kw">if</span>(!locked_out) <span class="fn">show_main_screen</span>();
         }
-        <span class="kw">if</span> (locked_out) { <span class="cm">/* countdown logic */</span> <span class="kw">continue</span>; }
-        <span class="kw">if</span> (btn == <span class="num">0</span>)    { <span class="cm">/* admin flow */</span> }
-        <span class="typ">char</span> key = <span class="fn">keypad_read</span>(); <span class="kw">if</span> (!key) <span class="kw">continue</span>;
-        <span class="kw">if</span>      (key == <span class="str">'A'</span>) <span class="fn">show_access_log</span>();
-        <span class="kw">else if</span> (key == <span class="str">'#'</span>) { <span class="cm">/* PIN confirm */</span> }
-        <span class="kw">else if</span> (key == <span class="str">'*'</span>) { <span class="fn">reset_entry</span>(); <span class="fn">show_main_screen</span>(); }
-        <span class="kw">else if</span> (key >= <span class="str">'0'</span> && key &lt;= <span class="str">'9'</span>)
-            <span class="kw">if</span> (pin_index &lt; <span class="num">4</span>) { entered_pin[pin_index++] = key; <span class="fn">show_pin_dots</span>(); }
+        <span class="kw">if</span>(locked_out){
+            <span class="kw">if</span>(lockout_timer.<span class="fn">read_ms</span>()>=<span class="num">30000</span>){
+                locked_out=<span class="kw">false</span>;wrong_attempts=<span class="num">0</span>;
+                lockout_timer.<span class="fn">stop</span>();lockout_timer.<span class="fn">reset</span>(); <span class="fn">show_main_screen</span>();
+            } <span class="kw">else</span> {
+                <span class="kw">int</span> rem=<span class="num">30</span>-(<span class="kw">int</span>)(lockout_timer.<span class="fn">read_ms</span>()/<span class="num">1000</span>);
+                <span class="typ">char</span> msg[<span class="num">17</span>]=<span class="str">"LOCKED XX S"</span>;
+                msg[<span class="num">7</span>]=<span class="str">'0'</span>+(rem/<span class="num">10</span>); msg[<span class="num">8</span>]=<span class="str">'0'</span>+(rem%<span class="num">10</span>);
+                <span class="fn">oled_clear</span>(); <span class="fn">oled_print</span>(<span class="num">1</span>,msg);
+            }
+            <span class="kw">continue</span>;
+        }
+        <span class="kw">if</span>(btn==<span class="num">0</span>){
+            <span class="fn">thread_sleep_for</span>(<span class="num">50</span>);
+            <span class="kw">if</span>(btn==<span class="num">0</span>){
+                <span class="fn">reset_entry</span>(); <span class="fn">oled_clear</span>();
+                <span class="fn">oled_print</span>(<span class="num">0</span>,<span class="str">"ADMIN"</span>); <span class="fn">oled_print</span>(<span class="num">1</span>,<span class="str">"ENTER CUR PIN"</span>);
+                <span class="kw">int</span> a_idx=<span class="num">0</span>; <span class="typ">char</span> a_pin[<span class="num">5</span>]=<span class="str">""</span>;
+                <span class="kw">while</span>(a_idx&lt;<span class="num">4</span>){
+                    <span class="typ">char</span> k=<span class="fn">keypad_read</span>();
+                    <span class="kw">if</span>(k>=<span class="str">'0'</span>&&k<=<span class="str">'9'</span>) a_pin[a_idx++]=k;
+                }
+                a_pin[<span class="num">4</span>]=<span class="str">'\0'</span>; <span class="typ">bool</span> ok=<span class="kw">true</span>;
+                <span class="kw">for</span>(<span class="kw">int</span> i=<span class="num">0</span>;i&lt;<span class="num">4</span>;i++)
+                    <span class="kw">if</span>(a_pin[i]!=correct_pin[i]){ok=<span class="kw">false</span>;<span class="kw">break</span>;}
+                <span class="kw">if</span>(ok) <span class="fn">change_pin_mode</span>();
+                <span class="kw">else</span>{ <span class="fn">oled_print</span>(<span class="num">1</span>,<span class="str">"WRONG PIN"</span>); <span class="fn">thread_sleep_for</span>(<span class="num">2000</span>); <span class="fn">show_main_screen</span>(); }
+            }
+        }
+        <span class="typ">char</span> key=<span class="fn">keypad_read</span>();
+        <span class="kw">if</span>(!key) <span class="kw">continue</span>;
+        <span class="kw">if</span>(key==<span class="str">'A'</span>){ <span class="fn">show_access_log</span>(); }
+        <span class="kw">else if</span>(key==<span class="str">'#'</span>){
+            <span class="kw">if</span>(pin_index==<span class="num">4</span>){
+                entered_pin[<span class="num">4</span>]=<span class="str">'\0'</span>;
+                <span class="kw">if</span>(<span class="fn">check_pin</span>()){
+                    <span class="kw">if</span>(temperature><span class="num">35.0f</span>) <span class="fn">deny_access</span>(<span class="kw">true</span>);
+                    <span class="kw">else</span> <span class="fn">grant_access</span>();
+                } <span class="kw">else</span> { <span class="fn">deny_access</span>(<span class="kw">false</span>); }
+            }
+        } <span class="kw">else if</span>(key==<span class="str">'*'</span>){ <span class="fn">reset_entry</span>(); <span class="fn">show_main_screen</span>(); }
+        <span class="kw">else if</span>(key>=<span class="str">'0'</span>&&key<=<span class="str">'9'</span>){
+            <span class="kw">if</span>(pin_index&lt;<span class="num">4</span>){ entered_pin[pin_index]=key; pin_index++; <span class="fn">show_pin_dots</span>(); }
+        }
     }
 }</pre>
   </div>
@@ -781,9 +840,9 @@
 </section>
 
 <footer>
-  <strong>EFB 2073 - Microprocessors &amp; Computer Architecture</strong><br>
-  Universiti Teknologi PETRONAS · January 2026 Semester<br>
-  Safa Sarfraz (24001006) &nbsp;·&nbsp; Eunice Yeo Lok Qian (22010378)
+  <strong>EFB 2073 - Microprocessors and Computer Architecture</strong><br>
+  Universiti Teknologi PETRONAS &middot; January 2026 Semester<br>
+  Safa Sarfraz (24001006) &middot; Eunice Yeo Lok Qian (22010378)
 </footer>
 
 </body>
